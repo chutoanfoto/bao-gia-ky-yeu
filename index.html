@@ -9,10 +9,9 @@
     <meta property="og:image" content="https://i.postimg.cc/5NHJGHLh/preview-ky-yeu.jpg">
     <meta property="og:url" content="https://chutoanfoto.github.io/bao-gia-ky-yeu/">
     <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
 
     <title>Bảng Giá Kỷ Yếu - Chu Toàn</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Mulish:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Mulish:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --card-bg: rgba(255, 255, 255, 0.07); 
@@ -23,162 +22,96 @@
 
         body {
             font-family: 'Mulish', sans-serif;
-            /* Thay thế ảnh nền bằng màu nền thuần túy */
             background-color: #122018;
             color: var(--text-main);
             margin: 0;
             padding: 0;
+            line-height: 1.5;
         }
 
-        /* NỀN GRADIENT CHUYỂN SẮC TỪ TRÊN XUỐNG DƯỚI Y HỆT MẪU */
         .bg-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(180deg, #182b21 0%, #122018 40%, #0a110d 100%);
             z-index: 0;
         }
 
-        .container { position: relative; z-index: 1; max-width: 650px; width: 100%; margin: 0 auto; padding-bottom: 30px; }
+        .container { position: relative; z-index: 1; max-width: 600px; width: 92%; margin: 0 auto; padding: 20px 0 40px; }
 
-        .hero { text-align: center; padding: 45px 15px 25px; border-bottom: 1px solid var(--border-light); }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 2.5px; text-shadow: 2px 2px 6px rgba(0,0,0,0.4); }
-
-        .pricing-section { padding: 0 15px 15px; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 22px; text-align: center; text-transform: uppercase; letter-spacing: 2px; padding: 20px 0; border-bottom: 1px solid var(--border-light); margin: 0 0 20px; }
 
         .group-header {
-            text-align: center; font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--accent);
-            margin: 30px 0 15px; letter-spacing: 2px; text-transform: uppercase;
+            font-family: 'Playfair Display', serif; font-size: 16px; color: var(--accent);
+            margin: 25px 0 15px; letter-spacing: 1.5px; text-transform: uppercase;
             display: flex; align-items: center; justify-content: center; gap: 10px;
         }
-        .group-header::before, .group-header::after { content: ""; height: 1px; width: 30px; background: var(--border-light); }
+        .group-header::before, .group-header::after { content: ""; height: 1px; width: 20px; background: var(--border-light); }
 
         .price-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-light);
-            border-radius: 12px;
-            padding: 18px 20px; 
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            backdrop-filter: blur(10px);
+            background: var(--card-bg); border: 1px solid var(--border-light);
+            border-radius: 10px; padding: 15px; margin-bottom: 10px;
+            display: flex; justify-content: space-between; align-items: center;
         }
 
-        .card-title { font-size: 15px; font-weight: 600; }
-        .card-price { font-size: 17px; font-weight: 800; }
-        .price-unit { font-size: 12px; opacity: 0.8; }
+        .card-title { font-size: 14px; font-weight: 600; width: 60%; }
+        .card-price { font-size: 14px; font-weight: 800; text-align: right; width: 40%; }
+        .price-unit { font-size: 11px; opacity: 0.7; display: block; }
 
         .details-box {
-            background: var(--card-bg);
-            border-left: 3px solid var(--accent);
-            padding: 20px 25px;
-            border-radius: 0 12px 12px 0;
-            border-top: 1px solid var(--border-light);
-            border-right: 1px solid var(--border-light);
-            border-bottom: 1px solid var(--border-light);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            backdrop-filter: blur(10px);
+            background: var(--card-bg); border-left: 3px solid var(--accent);
+            padding: 18px; border-radius: 0 10px 10px 0; border: 1px solid var(--border-light);
+            font-size: 13.5px;
         }
-        .details-box ul { list-style: none; padding: 0; margin: 0; font-size: 14.5px; }
-        .details-box li { margin-bottom: 12px; padding-left: 25px; position: relative; }
+        .details-box ul { list-style: none; padding: 0; margin: 0; }
+        .details-box li { margin-bottom: 10px; padding-left: 20px; position: relative; }
         .details-box li::before { content: "✦"; position: absolute; left: 0; color: var(--accent); }
-        .highlight-red { color: #ff8080; font-style: italic; font-size: 13.5px; display: block; margin-top: 8px; }
+        .highlight-red { color: #ff8080; font-style: italic; font-size: 12px; display: block; margin-top: 5px; }
 
         .btn-link {
-            display: block; width: calc(100% - 40px); margin: 0 auto; padding: 14px;
-            background: var(--card-bg); color: var(--text-main); text-decoration: none; border-radius: 30px;
-            border: 1px solid var(--accent); font-weight: 700; font-size: 14px; text-transform: uppercase; text-align: center;
-            backdrop-filter: blur(10px);
+            display: block; width: 100%; margin: 25px auto; padding: 12px;
+            background: var(--card-bg); color: var(--text-main); text-decoration: none; 
+            border-radius: 25px; border: 1px solid var(--accent); font-weight: 700; font-size: 13px;
+            text-transform: uppercase; text-align: center;
         }
-        .btn-link:hover { background: var(--accent); color: #122018; }
     </style>
 </head>
 <body>
     <div class="bg-overlay"></div>
     <div class="container">
-        <div class="hero"><h1>Bảng Giá Kỷ Yếu</h1></div>
-        <div class="pricing-section">
-            <div class="group-header">Kỷ Yếu Đơn</div>
-            <div class="price-card"><div class="card-title">Chụp 1 buổi</div><div class="card-price">900.000 VNĐ</div></div>
-            <div class="price-card"><div class="card-title">Chụp 2 buổi (Sáng - Chiều)</div><div class="card-price">1.500.000 VNĐ</div></div>
+        <h1>Bảng Giá Kỷ Yếu</h1>
+        
+        <div class="group-header">Kỷ Yếu Đơn</div>
+        <div class="price-card"><div class="card-title">Chụp 1 buổi</div><div class="card-price">900.000 VNĐ</div></div>
+        <div class="price-card"><div class="card-title">Chụp 2 buổi</div><div class="card-price">1.500.000 VNĐ</div></div>
 
-            <div class="group-header">Nhóm 2 Bạn</div>
-            <div class="price-card"><div class="card-title">Chụp 1 buổi</div><div class="card-price">700.000 VNĐ <span class="price-unit">/ bạn</span></div></div>
-            <div class="price-card"><div class="card-title">Chụp 2 buổi (Sáng - Chiều)</div><div class="card-price">1.200.000 VNĐ <span class="price-unit">/ bạn</span></div></div>
+        <div class="group-header">Nhóm 2 Bạn</div>
+        <div class="price-card"><div class="card-title">Chụp 1 buổi</div><div class="card-price">700.000 VNĐ <span class="price-unit">/ bạn</span></div></div>
+        <div class="price-card"><div class="card-title">Chụp 2 buổi</div><div class="card-price">1.200.000 VNĐ <span class="price-unit">/ bạn</span></div></div>
 
-            <div class="group-header">Nhóm 3 - 4 Bạn</div>
-            <div class="price-card"><div class="card-title">Chụp 1 buổi</div><div class="card-price">600.000 VNĐ <span class="price-unit">/ bạn</span></div></div>
-            <div class="price-card"><div class="card-title">Chụp 2 buổi (Sáng - Chiều)</div><div class="card-price">1.000.000 VNĐ <span class="price-unit">/ bạn</span></div></div>
+        <div class="group-header">Nhóm 3 - 4 Bạn</div>
+        <div class="price-card"><div class="card-title">Chụp 1 buổi</div><div class="card-price">600.000 VNĐ <span class="price-unit">/ bạn</span></div></div>
+        <div class="price-card"><div class="card-title">Chụp 2 buổi</div><div class="card-price">1.000.000 VNĐ <span class="price-unit">/ bạn</span></div></div>
+
+        <div class="details-box">
+            <ul>
+                <li>Phụ kiện: <strong>Áo cử nhân quốc tế (gói Đơn), Súng bong bóng, Bằng tốt nghiệp, SASH</strong>.</li>
+                <li>Trả toàn bộ file gốc.</li>
+                <li>Mỗi bạn được chọn <strong>12 ảnh</strong> chỉnh sửa.</li>
+                <li>Miễn phí đi lại trong bán kính <strong>15 km</strong>.</li>
+                <li>Cọc trước: Kỷ Đơn <strong>200k</strong>, Nhóm 2 <strong>400k</strong>, Nhóm 3-4 <strong>500k</strong>.
+                    <span class="highlight-red">(Không hoàn cọc nếu hủy sát ngày)</span>
+                </li>
+            </ul>
         </div>
 
-        <div class="details-section">
-            <div class="details-box">
-                <ul>
-                    <li>Phụ kiện: <strong>Áo cử nhân quốc tế <span style="opacity:0.7; font-style:italic;">(dành cho gói Đơn)</span>, Súng bong bóng, Bằng tốt nghiệp, SASH</strong>.</li>
-                    <li>Trả toàn bộ file gốc.</li>
-                    <li>Mỗi bạn được chọn <strong>12 ảnh</strong> chỉnh sửa.</li>
-                    <li>Miễn phí đi lại trong bán kính <strong>15 km</strong>.</li>
-                    <li>Cọc trước để giữ lịch:
-                        <div style="margin-top: 8px; padding-left: 5px;">
-                            <div style="display:flex; justify-content:space-width; max-width:210px; margin-bottom:5px;"><span>- Kỷ Đơn:</span> <strong>200.000 VNĐ</strong></div>
-                            <div style="display:flex; justify-content:space-width; max-width:210px; margin-bottom:5px;"><span>- Nhóm 2:</span> <strong>400.000 VNĐ</strong></div>
-                            <div style="display:flex; justify-content:space-width; max-width:210px;"><span>- Nhóm 3-4:</span> <strong>500.000 VNĐ</strong></div>
-                        </div>
-                        <span class="highlight-red">(Không hoàn cọc nếu hủy sát ngày)</span>
-                    </li>
-                </ul>
+        <div style="padding: 20px 0;">
+            <div id="sliderTrack" style="display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;">
+                <!-- Dùng lại danh sách ảnh của bạn -->
+                <img src="https://i.postimg.cc/ZK9GK1fx/CNT03694.jpg" style="flex: 0 0 85%; width: 85%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+                <img src="https://i.postimg.cc/J4yf49Tq/CNT03819.jpg" style="flex: 0 0 85%; width: 85%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+                <img src="https://i.postimg.cc/4NKDNr8v/CNT03820.jpg" style="flex: 0 0 85%; width: 85%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
             </div>
         </div>
-
-        <div class="slider-section" style="padding: 0 20px 20px; width: 100%; box-sizing: border-box;">
-            <div class="slider-wrapper" style="width: 82%; margin: 0 auto; border-radius: 12px; position: relative;">
-                <div class="slider-track" id="sliderTrack" style="display: flex; gap: 15px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 25px;">
-                    <img class="slide" src="https://i.postimg.cc/Pxd3WZfR/CNT03819.jpg" style="flex: 0 0 100%; width: 100%; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.4);" alt="Ảnh Mẫu">
-                    <img class="slide" src="https://i.postimg.cc/nzTd0zM3/CNT03694.jpg" style="flex: 0 0 100%; width: 100%; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.4);" alt="Ảnh Mẫu">
-                    <img class="slide" src="https://i.postimg.cc/26CcQvjM/CNT03820.jpg" style="flex: 0 0 100%; width: 100%; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.4);" alt="Ảnh Mẫu">
-                    <img class="slide" src="https://i.postimg.cc/V647D65h/CNT03827.jpg" style="flex: 0 0 100%; width: 100%; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.4);" alt="Ảnh Mẫu">
-                    <img class="slide" src="https://i.postimg.cc/sXKnwXvR/CNT03998.jpg" style="flex: 0 0 100%; width: 100%; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.4);" alt="Ảnh Mẫu">
-                    <img class="slide" src="https://i.postimg.cc/RFGPXFN9/CNT04078.jpg" style="flex: 0 0 100%; width: 100%; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.4);" alt="Ảnh Mẫu">
-                    <img class="slide" src="https://i.postimg.cc/50pPn064/CNT04345.jpg" style="flex: 0 0 100%; width: 100%; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.4);" alt="Ảnh Mẫu">
-                    <img class="slide" src="https://i.postimg.cc/NFMdVcH2/CNT04407.jpg" style="flex: 0 0 100%; width: 100%; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.4);" alt="Ảnh Mẫu">
-                    <img class="slide" src="https://i.postimg.cc/0jQV3swY/CNT04559.jpg" style="flex: 0 0 100%; width: 100%; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.4);" alt="Ảnh Mẫu">
-                </div>
-            </div>
-        </div>
-
-        <div class="links-section" style="text-align: center; padding: 0 20px 30px;">
-            <a href="#" class="btn-link">Tham khảo thêm ảnh Kỷ Yếu</a>
-        </div>
-
-        <div class="footer" style="text-align: center; padding: 20px 20px 40px; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; align-items: center;">
-            <div class="footer-logo" style="margin-bottom: 20px;">
-                <img src="https://i.postimg.cc/wvF7Hr48/chutoanfoto2026-logo-new.png" style="width: 130px; filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.6)) brightness(0) invert(1);" alt="Logo">
-            </div>
-            <div class="footer-address" style="font-size: 14px; color: #ccc; margin-bottom: 25px; line-height: 1.6;">
-                <span style="color: var(--accent); font-weight: 800; margin-right: 5px;">Địa chỉ:</span> 179 Nguyễn Thị Minh Khai, P. Đức Xuân, Thái Nguyên
-            </div>
-            <div class="social-icons" style="display: flex; justify-content: center; gap: 20px;">
-                <a href="https://www.facebook.com/chutoan21" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid var(--border-light); color: var(--accent); text-decoration: none;"><svg style="width:20px;height:20px;fill:currentColor;" viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg></a>
-                <a href="https://www.instagram.com/chutoan.fotos" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid var(--border-light); color: var(--accent); text-decoration: none;"><svg style="width:20px;height:20px;fill:currentColor;" viewBox="0 0 24 24"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 0 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg></a>
-                <a href="https://zalo.me/0398256746" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid var(--border-light); color: var(--accent); text-decoration: none; font-weight: 800; font-size: 13px;">Zalo</a>
-            </div>
-        </div>
+        <a href="#" class="btn-link">Tham khảo thêm ảnh Kỷ Yếu</a>
     </div>
-
-    <script>
-        const track = document.getElementById('sliderTrack');
-        let autoPlay = setInterval(() => {
-            if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
-                track.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-                track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
-            }
-        }, 3000); 
-
-        track.addEventListener('touchstart', () => {
-            clearInterval(autoPlay);
-        }, { passive: true });
-    </script>
 </body>
 </html>
