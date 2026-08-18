@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- THẺ BỔ SUNG: Hiển thị Preview Link -->
+    <!-- THẺ HIỂN THỊ PREVIEW CHUẨN XÁC KHO MỚI -->
     <meta property="og:title" content="Bảng Giá Chụp Kỷ Yếu | Chu Toàn Foto">
     <meta property="og:description" content="Lưu giữ thanh xuân rực rỡ. Hỗ trợ phụ kiện xịn xò, trả toàn bộ file gốc. Xem ngay bảng giá chi tiết!">
-    <!-- ĐÃ CẬP NHẬT ẢNH PREVIEW KỶ YẾU MỚI NHẤT -->
     <meta property="og:image" content="https://i.postimg.cc/5NHJGHLh/preview-ky-yeu.jpg">
-    <meta property="og:url" content="https://chutoanfoto.github.io/bao-gia-psc/ky-yeu.html">
+    <meta property="og:url" content="https://chutoanfoto.github.io/bao-gia-ky-yeu/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -17,7 +16,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Mulish:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Tone màu xanh rêu mờ và chữ trắng của Kỷ yếu */
             --card-bg: rgba(255, 255, 255, 0.08); 
             --accent: #ffffff; 
             --text-main: #f0f0f0;
@@ -44,7 +42,6 @@
             position: relative;
         }
 
-        /* Lớp phủ màu xanh rêu sẫm - Đã làm mờ hẳn background */
         .bg-overlay {
             position: fixed;
             top: 0;
@@ -68,7 +65,6 @@
             overflow: hidden;
         }
 
-        /* Header 1 Dòng */
         .hero {
             text-align: center;
             padding: 45px 15px 25px; 
@@ -87,7 +83,6 @@
             text-shadow: 2px 2px 8px rgba(0,0,0,0.6); 
         }
 
-        /* THIẾT KẾ BẢNG GIÁ 1 DÒNG */
         .pricing-section {
             padding: 0 15px 15px; 
         }
@@ -156,7 +151,6 @@
             margin-left: 2px;
         }
 
-        /* CHI TIẾT DỊCH VỤ (NOTE) */
         .details-section {
             padding: 15px 20px 35px;
         }
@@ -203,7 +197,6 @@
             font-size: 13.5px;
         }
 
-        /* Căn chỉnh danh sách cọc tiền */
         .deposit-list {
             margin-top: 8px;
             padding-left: 5px;
@@ -220,7 +213,6 @@
             color: var(--accent);
         }
 
-        /* SLIDE TRƯỢT ẢNH */
         .slider-section {
             padding: 0 20px 20px;
             width: 100%;
@@ -256,7 +248,6 @@
             display: block; 
         }
 
-        /* Nút Link Tham Khảo */
         .links-section {
             text-align: center;
             padding: 0 20px 30px; 
@@ -284,7 +275,6 @@
             color: var(--bg-color);
         }
 
-        /* Footer */
         .footer {
             text-align: center;
             padding: 20px 20px 40px;
@@ -360,56 +350,42 @@
     <div class="bg-overlay"></div>
 
     <div class="container">
-        <!-- Header 1 Dòng -->
         <div class="hero">
             <h1>Bảng Giá Kỷ Yếu</h1>
         </div>
 
-        <!-- Bảng giá Kỷ Yếu -->
         <div class="pricing-section">
-            
-            <!-- NHÓM KỶ YẾU ĐƠN -->
             <div class="group-header">Kỷ Yếu Đơn</div>
-            
             <div class="price-card">
                 <div class="card-title">Chụp 1 buổi</div>
                 <div class="card-price">900.000 VNĐ</div>
             </div>
-            
             <div class="price-card">
                 <div class="card-title">Chụp 2 buổi (Sáng - Chiều)</div>
                 <div class="card-price">1.500.000 VNĐ</div>
             </div>
 
-            <!-- NHÓM 2 BẠN -->
             <div class="group-header">Nhóm 2 Bạn</div>
-            
             <div class="price-card">
                 <div class="card-title">Chụp 1 buổi</div>
                 <div class="card-price">700.000 VNĐ <span class="price-unit">/ bạn</span></div>
             </div>
-            
             <div class="price-card">
                 <div class="card-title">Chụp 2 buổi (Sáng - Chiều)</div>
                 <div class="card-price">1.200.000 VNĐ <span class="price-unit">/ bạn</span></div>
             </div>
 
-            <!-- NHÓM 3 - 4 BẠN -->
             <div class="group-header">Nhóm 3 - 4 Bạn</div>
-            
             <div class="price-card">
                 <div class="card-title">Chụp 1 buổi</div>
                 <div class="card-price">600.000 VNĐ <span class="price-unit">/ bạn</span></div>
             </div>
-            
             <div class="price-card">
                 <div class="card-title">Chụp 2 buổi (Sáng - Chiều)</div>
                 <div class="card-price">1.000.000 VNĐ <span class="price-unit">/ bạn</span></div>
             </div>
-
         </div>
 
-        <!-- Chi tiết chính sách Kỷ Yếu -->
         <div class="details-section">
             <div class="details-box">
                 <ul>
@@ -435,7 +411,6 @@
             </div>
         </div>
 
-        <!-- Slide Ảnh Mới -->
         <div class="slider-section">
             <div class="slider-wrapper">
                 <div class="slider-track" id="sliderTrack">
@@ -452,12 +427,10 @@
             </div>
         </div>
 
-        <!-- Nút Link Tham Khảo -->
         <div class="links-section">
             <a href="#" class="btn-link">Tham khảo thêm ảnh Kỷ Yếu</a>
         </div>
 
-        <!-- FOOTER -->
         <div class="footer">
             <div class="footer-logo">
                 <img src="https://i.postimg.cc/wvF7Hr48/chutoanfoto2026-logo-new.png" alt="Chu Toàn Foto Logo">
@@ -479,10 +452,8 @@
                 </a>
             </div>
         </div>
-
     </div>
 
-    <!-- Script điều khiển slide trượt -->
     <script>
         const track = document.getElementById('sliderTrack');
         let autoPlay = setInterval(() => {
