@@ -2,552 +2,971 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#060606" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f4f5f7" media="(prefers-color-scheme: light)">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Lịch Chụp">
     
-    <!-- CODE ÉP HIỂN THỊ PREVIEW CHUẨN TRÁNH BỊ CẮT TRÊN INSTAGRAM -->
-    <meta property="og:title" content="Bảng Giá Chụp Kỷ Yếu | Chu Toàn Foto">
-    <meta property="og:description" content="Lưu giữ thanh xuân rực rỡ. Hỗ trợ phụ kiện, trả toàn bộ file gốc. Xem ngay bảng giá chi tiết!">
-    <meta property="og:image" content="https://i.postimg.cc/5NHJGHLh/preview-ky-yeu.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://chutoanfoto.github.io/bao-gia-ky-yeu/">
-    <meta property="og:type" content="website">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://i.postimg.cc/5NHJGHLh/preview-ky-yeu.jpg">
+    <link rel="apple-touch-icon" href="https://i.postimg.cc/prXXD19w/logo-app-lich-chup.jpg">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://i.postimg.cc/prXXD19w/logo-app-lich-chup.jpg">
+    <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/prXXD19w/logo-app-lich-chup.jpg">
+    <link rel="shortcut icon" href="https://i.postimg.cc/prXXD19w/logo-app-lich-chup.jpg">
 
-    <title>Bảng Giá Kỷ Yếu - Chu Toàn</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Mulish:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>ChuToan Foto - Quản Lý Lịch Chụp</title>
     <style>
+        *, *::before, *::after { box-sizing: border-box; }
+
+        /* ======== LIGHT MODE: TRUE LIQUID GLASS (Chuẩn iOS) ======== */
         :root {
-            --accent: #ffffff; 
-            --gold: #d4af37; 
-            --text-main: #f0f0f0;
-            --border-light: rgba(255, 255, 255, 0.15);
+            --bg-base: #f4f5f7; 
+            --bg-mesh: 
+                radial-gradient(circle at 15% 50%, rgba(223, 185, 110, 0.12), transparent 45%),
+                radial-gradient(circle at 85% 30%, rgba(135, 160, 190, 0.15), transparent 50%),
+                radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.8), transparent 80%);
             
-            /* THÔNG SỐ 3D LIQUID GLASS PRO ĐỘC QUYỀN */
-            --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%);
-            --glass-border: 1px solid rgba(255, 255, 255, 0.05);
-            --glass-top: 1px solid rgba(255, 255, 255, 0.45);
-            --glass-left: 1px solid rgba(255, 255, 255, 0.25);
-            --glass-bottom: 1px solid rgba(0, 0, 0, 0.5);
-            --glass-right: 1px solid rgba(0, 0, 0, 0.3);
-            --glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 
-                            inset 0 1px 2px rgba(255, 255, 255, 0.25), 
-                            inset 0 -1px 2px rgba(0, 0, 0, 0.2);
-        }
-
-        html, body {
-            -webkit-text-size-adjust: 100%;
-            -moz-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-            text-size-adjust: 100%;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Mulish', sans-serif;
-            background: #040805; 
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            position: relative;
-        }
-
-        /* LỚP NỀN XANH RÊU GỐC */
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, #183021 0%, #0d1a12 30%, #070e0a 70%, #040805 100%);
-            z-index: 0;
-        }
-        
-        .bg-overlay::before {
-            content: '';
-            position: absolute;
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80vw;
-            height: 500px;
-            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .container {
-            position: relative;
-            z-index: 1; 
-            max-width: 650px;
-            width: 100%;
-            margin: 0 auto;
-            min-height: 100vh;
-            padding-bottom: 30px;
-            overflow: hidden;
-        }
-
-        /* HEADER & LOGO DỜI LÊN TRÊN */
-        .hero {
-            text-align: center;
-            padding: 45px 15px 25px; 
-            margin-bottom: 10px; 
-            border-bottom: 1px solid var(--border-light);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .hero-logo {
-            width: 150px; 
-            height: auto;
-            margin-bottom: 15px;
-            filter: drop-shadow(0px 3px 8px rgba(0,0,0,0.7)) brightness(0) invert(1);
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 26px; 
-            font-weight: 600;
-            color: var(--accent);
-            margin: 0;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            line-height: 1.4; 
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.6); 
-        }
-
-        .pricing-section {
-            padding: 0 15px 15px; 
-        }
-
-        /* TIÊU ĐỀ NHÓM */
-        .group-header {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--accent);
-            margin: 35px 0 20px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .group-header::before, .group-header::after {
-            content: "";
-            height: 1px;
-            width: 40px;
-            background: var(--border-light);
-        }
-
-        /* 3D LIQUID GLASS PRO CHUẨN */
-        .liquid-glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px) saturate(120%);
-            -webkit-backdrop-filter: blur(20px) saturate(120%);
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-shine: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.1) 40%, rgba(255,255,255,0) 100%);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --glass-border-top: rgba(255, 255, 255, 1);
+            --glass-border-left: rgba(255, 255, 255, 0.8);
+            --glass-shadow: 0 12px 36px rgba(0,0,0,0.06), inset 0 -1px 2px rgba(255,255,255,0.3);
             
-            border: var(--glass-border);
-            border-top: var(--glass-top);
-            border-left: var(--glass-left);
-            border-bottom: var(--glass-bottom);
-            border-right: var(--glass-right);
+            --badge-bg: rgba(255, 255, 255, 0.7);
+            --badge-border: 1px solid rgba(255, 255, 255, 1);
+            --badge-shadow: 0 4px 12px rgba(197, 155, 39, 0.1);
+
+            --text-main: #141414; --text-muted: #78746c; --text-sub: #9e9a8f;
+            --accent-gold: #b38814; 
+            --tag-gold-bg: rgba(197, 155, 39, 0.12); --tag-gold-text: #96710d;
+            --alert-red: #d35400; --alert-bg: rgba(211, 84, 0, 0.1);
+            --success-green: #27ae60; --success-bg: rgba(39, 174, 96, 0.12);
             
-            box-shadow: var(--glass-shadow);
-            border-radius: 16px;
+            --modal-bg: rgba(245, 243, 238, 0.95); 
+            --input-bg: rgba(255, 255, 255, 0.9); 
+            --input-border: rgba(0, 0, 0, 0.08);
+            --input-text: #141414; --input-placeholder: #a8a398;
+            
+            --btn-secondary-bg: rgba(255, 255, 255, 0.8); --btn-secondary-text: #141414;
+            --divider-line: rgba(0, 0, 0, 0.06);
+            --header-bg: rgba(244, 245, 247, 0.75); 
+            --logo-filter: invert(1); --radius-card: 22px;
+        }
+
+        /* ======== DARK MODE: HOÀN HẢO GIỮ NGUYÊN 100% ======== */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-base: #060606; 
+                --bg-mesh: 
+                    radial-gradient(ellipse at 50% 0%, rgba(90, 75, 45, 0.25) 0%, transparent 55%), 
+                    radial-gradient(ellipse at 50% 100%, rgba(45, 55, 45, 0.2) 0%, transparent 55%);
+                
+                --glass-bg: rgba(30, 30, 28, 0.4);
+                --glass-shine: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 40%);
+                --glass-border: rgba(255, 255, 255, 0.03);
+                --glass-border-top: rgba(255, 255, 255, 0.15); 
+                --glass-border-left: rgba(255, 255, 255, 0.08);
+                --glass-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+                
+                --badge-bg: rgba(30, 28, 25, 0.6);
+                --badge-border: 1px solid rgba(223, 185, 110, 0.2);
+                --badge-shadow: 0 8px 20px rgba(0,0,0,0.6);
+
+                --text-main: #f0f0f0; --text-muted: #9a9a9a; --text-sub: rgba(240, 240, 240, 0.5);
+                --accent-gold: #dfb96e; 
+                --tag-gold-bg: rgba(223, 185, 110, 0.12); --tag-gold-text: #dfb96e;
+                --alert-red: #ff4747; --alert-bg: rgba(255, 71, 71, 0.12);
+                --success-green: #30d158; --success-bg: rgba(48, 209, 88, 0.12);
+                
+                --modal-bg: rgba(15, 15, 14, 0.96); 
+                --input-bg: rgba(25, 25, 23, 0.6); 
+                --input-border: rgba(255, 255, 255, 0.06);
+                --input-text: #f0f0f0; --input-placeholder: #777777;
+                
+                --btn-secondary-bg: rgba(255, 255, 255, 0.08); --btn-secondary-text: #dfb96e;
+                --divider-line: rgba(255, 255, 255, 0.06);
+                --header-bg: rgba(6, 6, 6, 0.7); 
+                --logo-filter: none;
+            }
+        }
+
+        html, body { 
+            margin: 0; padding: 0; width: 100vw; max-width: 100%; overflow-x: hidden; overscroll-behavior-x: none; 
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; 
+            background-color: var(--bg-base);
+            background-image: var(--bg-mesh);
+            background-attachment: fixed;
+            background-size: cover;
+            color: var(--text-main); min-height: 100vh; -webkit-tap-highlight-color: transparent; 
+        }
+        body.modal-open { overflow: hidden; position: fixed; width: 100%; height: 100%; }
+
+        .toast-msg {
+            position: fixed; top: 85px; left: 50%; transform: translateX(-50%) scale(0.9);
+            background: var(--card-bg); backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%);
+            color: var(--text-main); padding: 12px 24px; border-radius: 30px;
+            font-size: 13px; font-weight: 700; z-index: 1000;
+            border: 1px solid var(--accent-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center; white-space: nowrap;
+        }
+        .toast-msg.show { opacity: 1; transform: translateX(-50%) scale(1); }
+
+        .glass-fx { 
+            background: var(--glass-bg); 
+            backdrop-filter: blur(35px) saturate(200%); 
+            -webkit-backdrop-filter: blur(35px) saturate(200%); 
+            border: 1px solid var(--glass-border); 
+            border-top-color: var(--glass-border-top);
+            border-left-color: var(--glass-border-left);
+            box-shadow: var(--glass-shadow); 
             position: relative;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transform: translateZ(0);
         }
+        .glass-fx::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--glass-shine); pointer-events: none; z-index: 0; border-radius: inherit;
+        }
+        .glass-fx > * { position: relative; z-index: 1; }
+
+        .header { position: sticky; top: 0; z-index: 50; width: 100%; padding: 14px 20px; background: var(--header-bg); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); border-bottom: 1px solid var(--divider-line); display: flex; justify-content: space-between; align-items: center; }
+        .header img { height: 30px; object-fit: contain; filter: var(--logo-filter); position: relative; z-index: 2;}
+        .status-badge { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 20px; background: var(--success-bg); color: var(--success-green); font-size: 12px; font-weight: 700; border: 1px solid rgba(48, 209, 88, 0.2); }
+        .status-dot { width: 6px; height: 6px; background: var(--success-green); border-radius: 50%; box-shadow: 0 0 8px var(--success-green); }
+
+        .container { position: relative; z-index: 2; width: 100%; padding: 16px; max-width: 580px; margin: 0 auto; padding-bottom: 150px; }
         
-        .liquid-glass::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: inherit;
-            background: linear-gradient(110deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 30%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
-        }
+        .section-title { font-size: 11px; font-weight: 800; color: var(--text-muted); letter-spacing: 2px; margin-bottom: 14px; text-transform: uppercase; margin-left: 4px; }
 
-        /* CARD BÁO GIÁ */
-        .price-card {
-            padding: 20px 22px; 
-            margin-bottom: 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .price-card > div {
-            position: relative;
-            z-index: 1;
-        }
+        .calendar-swipe-header { text-align: center; margin-bottom: 20px; padding-top: 10px; cursor: pointer; user-select: none; }
+        .calendar-title-text { font-size: 15px; font-weight: 800; color: var(--accent-gold); letter-spacing: 4px; text-transform: uppercase; text-shadow: 0 0 20px rgba(223, 185, 110, 0.3); }
 
-        .card-title {
-            font-size: 15px; 
-            font-weight: 600;
-            line-height: 1.4;
-            color: var(--text-main);
-            flex: 1;
-        }
+        .year-block, .month-block, .day-block { transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease, margin 0.3s ease; max-height: 8000px; opacity: 1; overflow: hidden; transform-origin: top; }
+        .hidden-step { max-height: 0 !important; opacity: 0 !important; margin-top: 0 !important; margin-bottom: 0 !important; pointer-events: none; border: none !important; }
 
-        .card-price {
-            font-family: 'Mulish', sans-serif;
-            font-size: 17px; 
-            color: var(--accent);
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            text-align: right;
-            white-space: nowrap;
-            flex-shrink: 0; 
-            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
-        }
+        .year-header { padding: 20px 22px; margin: 16px 0 12px 0; border-radius: 24px; color: var(--accent-gold); font-weight: 800; font-size: 17px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; text-transform: uppercase; letter-spacing: 2px; }
+        .year-content { display: none; } .year-content.show { display: block; animation: fadeIn 0.3s ease; }
 
-        .price-unit {
-            font-size: 12px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.7);
-            margin-left: 2px;
-            text-shadow: none;
-        }
+        .month-header { padding: 16px 20px; margin: 12px 0 8px 8px; border-radius: 20px; border-left: 3px solid var(--accent-gold); color: var(--accent-gold); font-weight: 700; font-size: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none;}
+        .month-content { display: none; } .month-content.show { display: block; animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
 
-        /* CHI TIẾT DỊCH VỤ */
-        .details-section {
-            padding: 15px 20px 35px;
-        }
+        .day-header { padding: 14px 18px; margin: 8px 0 8px 16px; border-radius: 18px; border-left: 2px solid var(--text-muted); color: var(--text-main); font-weight: 700; font-size: 14px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none;}
+        @media (prefers-color-scheme: light) { .day-header { border-left-color: var(--accent-gold); } }
+        .day-content { display: none; } .day-content.show { display: block; animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+        .toggle-icon { transition: transform 0.25s ease; font-size: 11px; opacity: 0.8; }
 
-        .details-box {
-            padding: 20px 25px;
-            border-radius: 0 16px 16px 0;
-            border-left: 3px solid var(--accent);
+        .session-divider { display: flex; align-items: center; margin: 26px 0 18px 24px; font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; -webkit-tap-highlight-color: transparent;}
+        .session-content { display: block; overflow: hidden; animation: fadeIn 0.3s ease; }
+        .session-content.collapsed { display: none; }
+        .session-divider span { 
+            display: inline-flex; align-items: center; 
+            background: var(--badge-bg); 
+            padding: 8px 20px; 
+            border-radius: 30px; 
+            color: var(--accent-gold); 
+            border: var(--badge-border); 
+            box-shadow: var(--badge-shadow); 
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); 
+            position: relative; z-index: 2;
+            transition: transform 0.15s ease;
         }
+        .session-divider:active span { transform: scale(0.95); }
+        .session-divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--accent-gold), transparent); margin-left: 14px; opacity: 0.4; }
+
+        .card { border-radius: var(--radius-card); padding: 22px; margin: 0 0 16px 24px; cursor: pointer; transition: transform 0.15s ease; }
+        .card:active { transform: scale(0.985); }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
         
-        .details-box ul {
-            position: relative;
-            z-index: 1;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: 14.5px;
-        }
-        .details-box li {
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
-        }
-        .details-box li::before {
-            content: "✦";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-size: 14px;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
-        }
-        .highlight-red {
-            color: #ff6b6b;
-            font-style: italic;
-            font-size: 13.5px;
-            display: block;
-            margin-top: 8px;
-            font-weight: bold;
-        }
-        .highlight-sub {
-            color: rgba(255, 255, 255, 0.7);
-            font-style: italic;
-            font-size: 13.5px;
-        }
-
-        .deposit-list {
-            margin-top: 8px;
-            padding-left: 5px;
-        }
-        .deposit-item {
-            display: flex;
-            justify-content: space-between;
-            max-width: 210px; 
-            margin-bottom: 5px;
-            font-size: 14px;
-            color: rgba(255,255,255,0.9);
-        }
-        .deposit-item strong {
-            color: var(--accent);
-        }
-
-        /* SLIDE TRƯỢT */
-        .slider-section {
-            padding: 0 20px 20px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .slider-wrapper {
-            width: 82%;
-            margin: 0 auto; 
-            position: relative;
-        }
-        .slider-track {
-            display: flex;
-            gap: 15px; 
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; 
-            scroll-behavior: smooth;
-            padding-bottom: 25px; 
-            align-items: center; 
-        }
-        .slider-track::-webkit-scrollbar {
-            display: none; 
-        }
-        .slide {
-            flex: 0 0 100%; 
-            width: 100%;
-            height: auto; 
-            scroll-snap-align: center;
-            display: block; 
-            border-radius: 12px;
-        }
-
-        /* NÚT BẤM XEM THÊM */
-        .links-section {
-            text-align: center;
-            padding: 0 20px 30px; 
-        }
-        .btn-link {
-            display: block;
-            width: calc(100% - 40px);
-            margin: 0 auto;
-            padding: 14px;
-            color: var(--text-main);
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 14px;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .btn-link span {
-            position: relative;
-            z-index: 1;
-        }
-        .btn-link:hover {
-            background: rgba(255,255,255,0.1);
-        }
-        .btn-link:active {
-            transform: scale(0.95);
-        }
-
-        /* FOOTER (Logo đã đưa lên đầu) */
-        .footer {
-            text-align: center;
-            padding: 20px 20px 40px;
-            border-top: 1px solid var(--border-light);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .footer-address {
-            font-size: 14px;
-            color: #ccc;
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
+        .client-name-container { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+        .client-name { font-size: 18px; font-weight: 800; color: var(--text-main); margin: 0; letter-spacing: -0.2px; }
         
-        .footer-address span {
-            color: var(--accent);
-            font-weight: 800;
-            margin-right: 5px;
-        }
+        .social-links-row { display: flex; align-items: center; gap: 8px; }
+        .social-icon { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; transition: opacity 0.2s; opacity: 1;}
+        .social-icon:active { opacity: 0.5; }
 
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
+        .tag-package { display: inline-block; padding: 5px 12px; border-radius: 8px; font-size: 11.5px; font-weight: 700; background: var(--tag-gold-bg); color: var(--tag-gold-text); border: 1px solid rgba(223, 185, 110, 0.2); }
+        .tag-session { font-size: 11.5px; font-weight: 600; background: var(--btn-secondary-bg); color: var(--text-main); padding: 6px 14px; border-radius: 8px; border: 1px solid var(--divider-line); }
 
-        .social-icons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            color: var(--accent);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
+        .location-row { display: flex; align-items: flex-start; margin-bottom: 10px; font-size: 14px; color: var(--text-main); }
+        .location-label { display: flex; align-items: center; font-weight: 600; color: var(--text-muted); width: 100px; flex-shrink: 0; }
+        .location-value { font-weight: 500; }
 
-        .social-icons a:hover, .social-icons a:active {
-            transform: translateY(-4px);
-        }
+        .action-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; margin-bottom: 18px; }
+        .action-link-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 11.5px; font-weight: 700; border: 1px solid var(--divider-line); background: var(--btn-secondary-bg); color: var(--text-main); text-transform: uppercase; letter-spacing: 0.5px;}
+        @media (prefers-color-scheme: dark) { .action-link-btn { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.05); } }
 
-        .social-icons a svg {
-            position: relative;
-            z-index: 1;
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-        }
+        .money-bar { background: rgba(0,0,0,0.02); border-radius: 14px; border: 1px solid var(--divider-line); padding: 16px 18px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.01); }
+        @media (prefers-color-scheme: dark) { .money-bar { background: rgba(255,255,255,0.03); box-shadow: inset 0 2px 10px rgba(0,0,0,0.2); border-color: rgba(255,255,255,0.05); } }
+        .money-bar .total { font-weight: 600; color: var(--text-muted); } .money-bar .total-num { color: var(--text-main); font-weight: 800; }
+        .money-bar .debt { color: var(--alert-red); font-weight: 800; } .money-bar .paid { color: var(--success-green); font-weight: 800; }
 
-        .zalo-text {
-            position: relative;
-            z-index: 1;
-            font-family: 'Mulish', sans-serif;
-            font-weight: 800;
-            font-size: 13px;
-            letter-spacing: 0.5px;
+        .card-expanded-content { display: none; margin-top: 18px; padding-top: 18px; border-top: 1px dashed var(--divider-line); }
+        .card-expanded-content.show { display: block; animation: fadeIn 0.2s ease; }
+        .detail-item { display: flex; justify-content: space-between; font-size: 13.5px; margin-bottom: 10px; color: var(--text-muted); } .detail-item span:last-child { font-weight: 700; color: var(--text-main); }
+        
+        .detail-note { margin-top: 14px; padding: 16px; background: rgba(0,0,0,0.02); border-radius: 14px; border: 1px solid var(--divider-line); }
+        @media (prefers-color-scheme: dark) { .detail-note { background: rgba(255,255,255,0.02); border-color: rgba(255,255,255,0.05); } }
+        .detail-note-label { font-size: 11.5px; font-weight: 800; color: var(--text-muted); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 1px;}
+        .detail-note-content { font-size: 14px; font-weight: 500; color: var(--text-main); line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+
+        .card-btns-row { display: flex; gap: 12px; margin-top: 18px; position: relative; z-index: 10;}
+        
+        .btn-card-action { 
+            flex: 1; display:flex; justify-content:center; align-items:center; 
+            padding: 14px 0; border: none; border-radius: 12px; font-size: 12.5px; 
+            font-weight: 700; cursor: pointer; text-transform: uppercase; 
+            letter-spacing: 0.5px; border: 1px solid var(--divider-line); 
+            transition: all 0.15s ease; -webkit-tap-highlight-color: transparent;
         }
+        .btn-card-action:active { transform: scale(0.92); opacity: 0.8; filter: brightness(0.9); }
+        .btn-edit { background: var(--btn-secondary-bg); color: var(--accent-gold); } 
+        .btn-delete { background: var(--alert-bg); color: var(--alert-red); border-color: transparent;}
+
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+        .stat-card { border-radius: 22px; padding: 20px; }
+        .stat-label { font-size: 11px; font-weight: 800; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;}
+        .stat-value { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; }
+        .stat-value.gold { color: var(--accent-gold); text-shadow: 0 0 15px rgba(223, 185, 110, 0.4); } .stat-value.green { color: var(--success-green); } .stat-value.red { color: var(--alert-red); }
+
+        .select-filter { width: 100%; padding: 16px 18px; border-radius: 18px; color: var(--text-main); font-size: 15px; font-weight: 700; outline: none; border-color: var(--card-border); appearance: none; -webkit-appearance: none; background: url('data:image/svg+xml;utf8,<svg fill="%23dfb96e" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>') no-repeat right 14px center; }
+
+        .fab { position: fixed; bottom: 32px; right: 24px; width: 60px; height: 60px; background: linear-gradient(135deg, var(--accent-gold), #a38228); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 30px; font-weight: 300; box-shadow: 0 12px 30px rgba(197, 155, 39, 0.4); cursor: pointer; z-index: 80; border: 1px solid rgba(255,255,255,0.4); }
+        @media (prefers-color-scheme: dark) { .fab { color: #000; box-shadow: 0 12px 30px rgba(223, 185, 110, 0.3); border-color: rgba(255,255,255,0.2);} }
+        .fab:active { transform: scale(0.92); }
+
+        .modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); justify-content: center; align-items: flex-end; overscroll-behavior: contain; width: 100vw; }
+        .modal-content { background: var(--modal-bg); border-top: 1px solid var(--card-border-top); border-radius: 32px 32px 0 0; width: 100%; max-width: 580px; max-height: 88vh; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; padding: 30px 24px 40px 24px; box-shadow: 0 -20px 60px rgba(0,0,0,0.6); animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } } @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; } 
+        .modal-header h3 { margin: 0; font-size: 20px; color: var(--accent-gold); font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase;} 
+        .close-btn { font-size: 16px; color: var(--text-main); cursor: pointer; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: var(--btn-secondary-bg); border-radius: 50%; border: 1px solid var(--divider-line); }
+        
+        .tab-panel { display: none; } .tab-panel.active { display: block; }
+        .form-group { margin-bottom: 18px; display: flex; flex-direction: column; width: 100%; } 
+        .form-group label { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; margin-left: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;} 
+        
+        .form-control, .form-select { width: 100%; padding: 16px 16px; background: var(--input-bg) !important; border: 1px solid var(--input-border) !important; border-radius: 14px; color: var(--input-text) !important; font-size: 15px; font-weight: 500; outline: none; -webkit-appearance: none; transition: all 0.2s ease; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02); } 
+        .form-control::placeholder { color: var(--input-placeholder); font-weight: 400;}
+        .form-control:focus, .form-select:focus { border-color: var(--accent-gold) !important; box-shadow: 0 0 0 3px rgba(223, 185, 110, 0.15), inset 0 2px 5px rgba(0,0,0,0.02); }
+        textarea.form-control { resize: vertical; min-height: 90px; font-family: inherit; line-height: 1.5; } 
+
+        .btn-submit { width: 100%; padding: 20px; border: none; border-radius: 16px; font-weight: 800; font-size: 15px; color: #fff; margin-top: 16px; cursor: pointer; background: linear-gradient(135deg, var(--accent-gold), #997328); box-shadow: 0 8px 25px rgba(197, 155, 39, 0.25); text-transform: uppercase; letter-spacing: 1px; transition: all 0.15s;} 
+        @media (prefers-color-scheme: dark) { .btn-submit { color: #000; } }
+        .btn-submit:active { transform: scale(0.98); opacity: 0.8;}
+        
+        .btn-pay { display:flex; justify-content:center; align-items:center; background: rgba(39, 174, 96, 0.12); color: var(--success-green); width: 100%; padding: 16px; border: 1px solid rgba(39, 174, 96, 0.3); border-radius: 14px; font-weight: 800; font-size: 14px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: all 0.15s;} 
+        .btn-pay:active { transform: scale(0.96); opacity: 0.8; }
+        
+        .loader { text-align: center; padding: 50px; color: var(--accent-gold); font-weight: 700; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* DANH SÁCH QUẢN LÝ LỊCH ẨN */
+        .hidden-item-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 14px 18px; margin-bottom: 12px; border-radius: 16px;
+        }
+        .btn-restore {
+            background: rgba(39, 174, 96, 0.15); color: var(--success-green);
+            border: 1px solid rgba(39, 174, 96, 0.2); padding: 8px 16px; 
+            border-radius: 10px; font-weight: 800; font-size: 11.5px; 
+            text-transform: uppercase; cursor: pointer; transition: transform 0.15s;
+        }
+        .btn-restore:active { transform: scale(0.9); }
     </style>
 </head>
 <body>
-    <div class="bg-overlay"></div>
+
+    <div id="appToast" class="toast-msg"></div>
+
+    <div class="app-bg"></div>
+    <div class="app-overlay"></div>
+
+    <!-- MODAL QUẢN LÝ LỊCH ẨN -->
+    <div class="modal" id="modalRestore" onclick="if(event.target === this) closeRestoreModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 id="modalRestoreTitle">LỊCH ĐANG ẨN</h3>
+                <span class="close-btn" onclick="closeRestoreModal()">✕</span>
+            </div>
+            <div id="hiddenItemsContainer"></div>
+            <button class="btn-submit" style="margin-top:10px; background: rgba(0,0,0,0.05); color: var(--text-main); border: 1px solid var(--divider-line); box-shadow: none;" onclick="restoreAllHidden()">KHÔI PHỤC TẤT CẢ</button>
+        </div>
+    </div>
 
     <div class="container">
-        <!-- HEADER VÀ LOGO -->
-        <div class="hero">
-            <img class="hero-logo" src="https://i.postimg.cc/wvF7Hr48/chutoanfoto2026-logo-new.png" alt="Chu Toàn Foto Logo">
-            <h1>Bảng Giá Kỷ Yếu</h1>
+        <div class="header glass-fx" style="border-radius: 26px; margin-bottom: 26px;">
+            <img src="https://i.postimg.cc/wvF7Hr48/chutoanfoto2026-logo-new.png" alt="ChuToan Foto Logo">
+            <div class="status-badge"><span class="status-dot"></span> Đã kết nối</div>
         </div>
 
-        <div class="pricing-section">
-            <!-- KỶ YẾU ĐƠN -->
-            <div class="group-header">Kỷ Yếu Đơn</div>
+        <div class="calendar-swipe-header" id="swipeHandle">
+            <div class="calendar-title-text">LỊCH CHỤP</div>
+            <div style="font-size:10px; font-weight:600; color:var(--text-muted); margin-top:4px;">Chạm vào đây để xem lịch đang ẩn</div>
+        </div>
+        
+        <div id="bookingList"><div class="loader">Đang tải dữ liệu...</div></div>
+
+        <div class="section-title" style="margin-top: 40px;">THỐNG KÊ DOANH THU</div>
+        <div style="display: flex; gap: 14px; margin-bottom: 18px;">
+            <select id="filterYear" class="select-filter glass-fx" style="flex: 1;" onchange="updateStatsUI()"><option value="ALL">Tất cả năm</option></select>
+            <select id="filterMonth" class="select-filter glass-fx" style="flex: 1;" onchange="updateStatsUI()">
+                <option value="ALL">Cả năm</option><option value="0">Tháng 1</option><option value="1">Tháng 2</option><option value="2">Tháng 3</option><option value="3">Tháng 4</option><option value="4">Tháng 5</option><option value="5">Tháng 6</option><option value="6">Tháng 7</option><option value="7">Tháng 8</option><option value="8">Tháng 9</option><option value="9">Tháng 10</option><option value="10">Tháng 11</option><option value="11">Tháng 12</option>
+            </select>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card glass-fx"><div class="stat-label">Tổng Doanh Thu</div><div class="stat-value gold" id="totalRevenue">0 đ</div></div>
+            <div class="stat-card glass-fx"><div class="stat-label">Đã Thu Thực Tế</div><div class="stat-value green" id="totalCollected">0 đ</div></div>
+            <div class="stat-card glass-fx"><div class="stat-label">Chưa Thanh Toán</div><div class="stat-value red" id="totalDebt">0 đ</div></div>
+            <div class="stat-card glass-fx"><div class="stat-label">Tổng số Job</div><div class="stat-value" id="totalShows">0</div></div>
+        </div>
+    </div>
+
+    <div class="fab glass-fx" style="border-radius: 50%;" onclick="openModal()">+</div>
+
+    <div class="modal" id="modalForm" onclick="if(event.target === this) closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header"><h3 id="modalTitle">TẠO LỊCH MỚI</h3><span class="close-btn" onclick="closeModal()">✕</span></div>
             
-            <div class="price-card liquid-glass">
-                <div class="card-left">
-                    <div class="card-title">Chụp 1 buổi</div>
-                </div>
-                <div class="card-price">900.000 VNĐ</div>
-            </div>
-            <div class="price-card liquid-glass">
-                <div class="card-left">
-                    <div class="card-title">Chụp 2 buổi<br><span style="font-size: 13px; opacity: 0.8; font-weight: 500;">(Sáng - Chiều)</span></div>
-                </div>
-                <div class="card-price">1.400.000 VNĐ</div>
-            </div>
-
-            <!-- NHÓM 2 -->
-            <div class="group-header">Nhóm 2</div>
-            
-            <div class="price-card liquid-glass">
-                <div class="card-left">
-                    <div class="card-title">Chụp 1 buổi</div>
-                </div>
-                <div class="card-price">700.000 VNĐ <span class="price-unit">/ bạn</span></div>
-            </div>
-            <div class="price-card liquid-glass">
-                <div class="card-left">
-                    <div class="card-title">Chụp 2 buổi<br><span style="font-size: 13px; opacity: 0.8; font-weight: 500;">(Sáng - Chiều)</span></div>
-                </div>
-                <div class="card-price">1.200.000 VNĐ <span class="price-unit">/ bạn</span></div>
-            </div>
-
-            <!-- NHÓM 3 - 4 -->
-            <div class="group-header">Nhóm 3 - 4</div>
-            
-            <div class="price-card liquid-glass">
-                <div class="card-left">
-                    <div class="card-title">Chụp 1 buổi</div>
-                </div>
-                <div class="card-price">600.000 VNĐ <span class="price-unit">/ bạn</span></div>
-            </div>
-            <div class="price-card liquid-glass">
-                <div class="card-left">
-                    <div class="card-title">Chụp 2 buổi<br><span style="font-size: 13px; opacity: 0.8; font-weight: 500;">(Sáng - Chiều)</span></div>
-                </div>
-                <div class="card-price">1.000.000 VNĐ <span class="price-unit">/ bạn</span></div>
-            </div>
-        </div>
-
-        <!-- CHI TIẾT -->
-        <div class="details-section">
-            <div class="details-box liquid-glass">
-                <ul>
-                    <li>Phụ kiện: <strong>Áo cử nhân quốc tế <span class="highlight-sub">(dành cho gói Đơn)</span>, Súng bong bóng, Bằng tốt nghiệp, SASH</strong>.</li>
-                    <li>Trả toàn bộ file gốc.</li>
-                    <li>Mỗi bạn được chọn <strong>12 - 15 ảnh</strong> chỉnh sửa.</li>
-                    <li>Miễn phí đi lại trong bán kính <strong>15 km</strong>.</li>
-                    <li>Cọc trước để giữ lịch:
-                        <div class="deposit-list">
-                            <div class="deposit-item">
-                                <span>- Kỷ Đơn:</span> <strong>200.000 VNĐ</strong>
-                            </div>
-                            <div class="deposit-item">
-                                <span>- Nhóm 2:</span> <strong>400.000 VNĐ</strong>
-                            </div>
-                            <div class="deposit-item">
-                                <span>- Nhóm 3-4:</span> <strong>500.000 VNĐ</strong>
-                            </div>
-                        </div>
-                        <span class="highlight-red">( Quý Khách Lưu ý Không Hoàn Cọc )</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- SLIDE ẢNH -->
-        <div class="slider-section">
-            <div class="slider-wrapper">
-                <div class="slider-track" id="sliderTrack">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.postimg.cc/ZK9GK1fx/CNT03694.jpg" alt="Ảnh Mẫu 1">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.postimg.cc/J4yf49Tq/CNT03819.jpg" alt="Ảnh Mẫu 2">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.postimg.cc/4NKDNr8v/CNT03820.jpg" alt="Ảnh Mẫu 3">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.postimg.cc/15gk5LWC/CNT03827.jpg" alt="Ảnh Mẫu 4">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.postimg.cc/rFdBFvh7/CNT03998.jpg" alt="Ảnh Mẫu 5">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.postimg.cc/4NrrKBMW/CNT04078.jpg" alt="Ảnh Mẫu 6">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.postimg.cc/PrBBL2c6/CNT04345.jpg" alt="Ảnh Mẫu 7">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.postimg.cc/J499yPvw/CNT04407.jpg" alt="Ảnh Mẫu 8">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.postimg.cc/TYZZyCFP/CNT04559.jpg" alt="Ảnh Mẫu 9">
-                </div>
-            </div>
-        </div>
-
-        <!-- NÚT LINK -->
-        <div class="links-section">
-            <a href="#" class="btn-link liquid-glass"><span>Tham khảo thêm ảnh Kỷ Yếu</span></a>
-        </div>
-
-        <!-- FOOTER -->
-        <div class="footer">
-            <div class="footer-address">
-                <span>Địa chỉ:</span> 179 Nguyễn Thị Minh Khai, P. Đức Xuân, Thái Nguyên
+            <div id="tab-create" class="tab-panel active">
+                <form id="formCreate" onsubmit="submitCreate(event)">
+                    <div class="form-group"><label>Ngày chụp</label><input type="date" id="c_ngay" class="form-control" required></div>
+                    <div class="form-group"><label>Thời gian (Sáng/Chiều/Tối)</label><input type="text" id="c_thoigian" class="form-control" placeholder="Ví dụ: Sáng 7h"></div>
+                    <div class="form-group"><label>Khách hàng (Tên)</label><input type="text" id="c_khach" class="form-control" required placeholder="Tên khách hàng"></div>
+                    <div class="form-group"><label>Địa điểm chụp</label><input type="text" id="c_diadiem" class="form-control" placeholder="Nơi chụp chính"></div>
+                    
+                    <div class="form-group">
+                        <label>Gói dịch vụ</label>
+                        <select id="c_noidung" class="form-select">
+                            <option value="Phóng Sự Cưới">Phóng Sự Cưới</option><option value="Ăn Hỏi">Ăn Hỏi</option><option value="Chụp Studio">Chụp Studio</option><option value="Sự Kiện">Sự Kiện</option><option value="Tốt Nghiệp">Tốt Nghiệp</option><option value="Kỷ Yếu Đơn">Kỷ Yếu Đơn</option><option value="Kỷ Yếu Nhóm 2">Kỷ Yếu Nhóm 2</option><option value="Kỷ Yếu Nhóm 3">Kỷ Yếu Nhóm 3</option><option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Giá gói chụp (VNĐ)</label><input type="text" id="c_gia" class="form-control money-input" placeholder="0"></div>
+                    <div class="form-group"><label>Phí đi lại (VNĐ)</label><input type="text" id="c_phi" class="form-control money-input" placeholder="0"></div>
+                    <div class="form-group"><label>Tiền cọc (VNĐ)</label><input type="text" id="c_coc" class="form-control money-input" placeholder="0"></div>
+                    <div class="form-group"><label>Số điện thoại khách (Để gọi)</label><input type="tel" id="c_sdt" class="form-control" placeholder="Ví dụ: 0987654321"></div>
+                    
+                    <div class="form-group"><label>Ghi chú / Timeline</label><textarea id="c_ghichu" class="form-control" rows="3" placeholder="Nhập lịch trình chi tiết..."></textarea></div>
+                    
+                    <div class="form-group"><label>Link Maps (Vị trí)</label><input type="url" id="c_linkmaps" class="form-control" placeholder="https://maps.app.goo.gl/..."></div>
+                    <div style="display:flex; gap:12px;">
+                        <div class="form-group" style="flex:1;"><label>Link FB</label><input type="url" id="c_linkfb" class="form-control" placeholder="https://fb.com/..."></div>
+                        <div class="form-group" style="flex:1;"><label>SĐT Zalo</label><input type="tel" id="c_zalo" class="form-control" placeholder="0987654321"></div>
+                    </div>
+                    <div class="form-group"><label>Link Instagram</label><input type="url" id="c_ig" class="form-control" placeholder="https://instagram.com/..."></div>
+                    <div class="form-group"><label>Link Drive (Bàn giao)</label><input type="url" id="c_linkdrive" class="form-control" placeholder="https://drive.google.com/..."></div>
+                    
+                    <button type="submit" class="btn-submit" id="btnCreate">TẠO LỊCH & ĐỒNG BỘ</button>
+                </form>
             </div>
 
-            <div class="social-icons">
-                <a href="https://www.facebook.com/chutoan21" class="liquid-glass" target="_blank" title="Facebook">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg>
-                </a>
-                <a href="https://www.instagram.com/chutoan.fotos" class="liquid-glass" target="_blank" title="Instagram">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 0 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
-                </a>
-                <a href="https://zalo.me/0398256746" class="liquid-glass" target="_blank" title="Zalo">
-                    <span class="zalo-text">Zalo</span>
-                </a>
+            <div id="tab-edit" class="tab-panel">
+                <form id="formEdit" onsubmit="submitEdit(event)">
+                    <input type="hidden" id="e_rowindex">
+                    <div class="form-group"><label>Ngày chụp</label><input type="date" id="e_ngay" class="form-control" required></div>
+                    <div class="form-group"><label>Thời gian (Sáng/Chiều/Tối)</label><input type="text" id="e_thoigian" class="form-control"></div>
+                    <div class="form-group"><label>Khách hàng (Tên)</label><input type="text" id="e_khach" class="form-control" required></div>
+                    <div class="form-group"><label>Địa điểm chụp</label><input type="text" id="e_diadiem" class="form-control"></div>
+                    
+                    <div class="form-group">
+                        <label>Gói dịch vụ</label>
+                        <select id="e_noidung" class="form-select">
+                            <option value="Phóng Sự Cưới">Phóng Sự Cưới</option><option value="Ăn Hỏi">Ăn Hỏi</option><option value="Chụp Studio">Chụp Studio</option><option value="Sự Kiện">Sự Kiện</option><option value="Tốt Nghiệp">Tốt Nghiệp</option><option value="Kỷ Yếu Đơn">Kỷ Yếu Đơn</option><option value="Kỷ Yếu Nhóm 2">Kỷ Yếu Nhóm 2</option><option value="Kỷ Yếu Nhóm 3">Kỷ Yếu Nhóm 3</option><option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Giá gói chụp (VNĐ)</label><input type="text" id="e_gia" class="form-control money-input"></div>
+                    <div class="form-group"><label>Phí đi lại (VNĐ)</label><input type="text" id="e_phi" class="form-control money-input"></div>
+                    <div class="form-group"><label>Tiền cọc (VNĐ)</label><input type="text" id="e_coc" class="form-control money-input"></div>
+                    <div class="form-group"><label>Số điện thoại khách (Để gọi)</label><input type="tel" id="e_sdt" class="form-control" placeholder="Ví dụ: 0987654321"></div>
+                    
+                    <div class="form-group"><label>Ghi chú / Timeline</label><textarea id="e_ghichu" class="form-control" rows="3"></textarea></div>
+
+                    <div class="form-group"><label>Link Maps (Vị trí)</label><input type="url" id="e_linkmaps" class="form-control" placeholder="https://maps.app.goo.gl/..."></div>
+                    <div style="display:flex; gap:12px;">
+                        <div class="form-group" style="flex:1;"><label>Link FB</label><input type="url" id="e_linkfb" class="form-control" placeholder="https://fb.com/..."></div>
+                        <div class="form-group" style="flex:1;"><label>SĐT Zalo</label><input type="tel" id="e_zalo" class="form-control" placeholder="0987654321"></div>
+                    </div>
+                    <div class="form-group"><label>Link Instagram</label><input type="url" id="e_ig" class="form-control" placeholder="https://instagram.com/..."></div>
+                    <div class="form-group"><label>Link Drive (Bàn giao)</label><input type="url" id="e_linkdrive" class="form-control" placeholder="https://drive.google.com/..."></div>
+                    
+                    <button type="submit" class="btn-submit" id="btnEdit">LƯU CẬP NHẬT</button>
+                </form>
             </div>
         </div>
     </div>
 
     <script>
-        const track = document.getElementById('sliderTrack');
-        let autoPlay = setInterval(() => {
-            if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
-                track.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-                track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
-            }
-        }, 3000); 
+        const API_URL = "https://script.google.com/macros/s/AKfycbyxTm4XHr7HF1WujMPs9oWARimjrmkUV50hbV0ko59oj1njSyWg7rQd1T4PryjGbeJm/exec";
+        let allValidData = []; let isFirstLoad = true;
 
-        track.addEventListener('touchstart', () => {
-            clearInterval(autoPlay);
-        }, { passive: true });
+        const ICON_CALENDAR = `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px"><rect x="3" y="4" width="18" height="18" rx="2.5" ry="2.5"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>`;
+        const ICON_SUN = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px"><circle cx="12" cy="12" r="4.5"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 4.9l1.4 1.4"></path></svg>`;
+        const ICON_SUNSET = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px"><path d="M12 3v2M4.9 7.1l1.4 1.4M19.1 7.1l-1.4 1.4M2 17h20M16 17a4 4 0 0 0-8 0"></path></svg>`;
+        const ICON_MOON = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+        const ICON_PIN = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px; flex-shrink:0; margin-top:2px;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>`;
+        const ICON_PHONE = `<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="margin-right:6px; flex-shrink:0; margin-top:3px; color:var(--accent-gold);"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>`;
+
+        const ICON_NOTE = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px; margin-top:-2px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>`;
+        const ICON_EDIT = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:5px; margin-top:-2px"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>`;
+        const ICON_DELETE = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:5px; margin-top:-2px"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>`;
+        const ICON_CHECK = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px; margin-top:-2px"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+
+        const FB_ICON = `<svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`;
+        const ZALO_ICON = `<span style="background:#0068FF; color:#fff; font-size:10px; font-weight:800; padding:0 6px; border-radius:5px; height:18px; line-height:18px; display:inline-block;">Zalo</span>`;
+        const IG_ICON = `<svg width="18" height="18" viewBox="0 0 24 24" fill="url(#ig-grad)"><defs><linearGradient id="ig-grad" x1="2" y1="2" x2="22" y2="22"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="url(#ig-grad)" stroke-width="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="url(#ig-grad)" stroke-width="2"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="url(#ig-grad)" stroke-width="2"></line></svg>`;
+
+        function showToast(message) {
+            let toast = document.getElementById('appToast');
+            toast.innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 3000);
+        }
+
+        let pressTimer;
+        function startLongPress(e, monthBlockId, labelText) {
+            pressTimer = setTimeout(() => {
+                let block = document.getElementById(monthBlockId);
+                if (block) {
+                    block.classList.add('hidden-step');
+                    saveUIState();
+                    showToast(`Đã ẩn ${labelText}. Chạm vào chữ LỊCH CHỤP để hiện lại.`);
+                }
+            }, 600);
+        }
+        function cancelLongPress() {
+            clearTimeout(pressTimer);
+        }
+
+        function saveUIState() {
+            let state = {
+                shows: Array.from(document.querySelectorAll('.show')).map(el => el.id).filter(id => id),
+                hiddens: Array.from(document.querySelectorAll('.hidden-step')).map(el => el.id).filter(id => id),
+                collapsedSessions: Array.from(document.querySelectorAll('.session-content.collapsed')).map(el => el.id).filter(id => id)
+            };
+            localStorage.setItem('chutoanUIState', JSON.stringify(state));
+        }
+
+        function restoreUIState() {
+            let saved = localStorage.getItem('chutoanUIState');
+            if (!saved) return;
+            let state = JSON.parse(saved);
+
+            document.querySelectorAll('.show').forEach(el => {
+                el.classList.remove('show');
+                if(el.previousElementSibling && el.previousElementSibling.querySelector('.toggle-icon')) {
+                    el.previousElementSibling.querySelector('.toggle-icon').style.transform = 'rotate(0deg)';
+                }
+            });
+
+            if (state.shows) {
+                state.shows.forEach(id => {
+                    let el = document.getElementById(id);
+                    if (el) {
+                        el.classList.add('show');
+                        if(el.previousElementSibling && el.previousElementSibling.querySelector('.toggle-icon')) {
+                            el.previousElementSibling.querySelector('.toggle-icon').style.transform = 'rotate(180deg)';
+                        }
+                    }
+                });
+            }
+
+            if (state.hiddens) {
+                state.hiddens.forEach(id => {
+                    let el = document.getElementById(id);
+                    if (el) el.classList.add('hidden-step');
+                });
+            }
+
+            if (state.collapsedSessions) {
+                state.collapsedSessions.forEach(id => {
+                    let el = document.getElementById(id);
+                    if (el) {
+                        el.classList.add('collapsed');
+                        if(el.previousElementSibling && el.previousElementSibling.querySelector('.toggle-icon')) {
+                            el.previousElementSibling.querySelector('.toggle-icon').style.transform = 'rotate(0deg)';
+                        }
+                    }
+                });
+            }
+        }
+
+        // TÍNH NĂNG MỚI: DANH SÁCH QUẢN LÝ LỊCH ẨN
+        document.getElementById('swipeHandle').addEventListener('click', function() {
+            let hiddenBlocks = document.querySelectorAll('.hidden-step');
+            if (hiddenBlocks.length === 0) {
+                showToast("Hiện không có lịch nào đang bị ẩn.");
+                return;
+            }
+            
+            let container = document.getElementById('hiddenItemsContainer');
+            let html = '';
+            
+            hiddenBlocks.forEach(block => {
+                let id = block.id;
+                let title = '';
+                let y = block.getAttribute('data-year');
+                let m = block.getAttribute('data-month');
+                let d = block.getAttribute('data-day');
+
+                if (block.classList.contains('year-block')) {
+                    title = `NĂM ${y}`;
+                } else if (block.classList.contains('month-block')) {
+                    title = `THÁNG ${m} / ${y}`;
+                } else if (block.classList.contains('day-block')) {
+                    title = `NGÀY ${("0"+d).slice(-2)}/${("0"+m).slice(-2)}/${y}`;
+                }
+                
+                html += `<div class="hidden-item-row glass-fx" onclick="restoreSingle('${id}')">
+                    <span style="font-size:14.5px; font-weight:800; color:var(--text-main);">${ICON_CALENDAR} ${title}</span>
+                    <button type="button" class="btn-restore">Hiện</button>
+                </div>`;
+            });
+            
+            container.innerHTML = html;
+            document.body.classList.add('modal-open'); 
+            document.getElementById('modalRestore').style.display = 'flex';
+        });
+
+        function closeRestoreModal() {
+            document.getElementById('modalRestore').style.display = 'none';
+            if(document.getElementById('modalForm').style.display !== 'flex') {
+                document.body.classList.remove('modal-open');
+            }
+        }
+        
+        function restoreSingle(id) {
+            let el = document.getElementById(id);
+            if (el) {
+                el.classList.remove('hidden-step');
+                saveUIState();
+                
+                // Cập nhật lại danh sách hiện tại
+                let hiddenBlocks = document.querySelectorAll('.hidden-step');
+                if (hiddenBlocks.length === 0) {
+                    closeRestoreModal();
+                    showToast("Đã khôi phục toàn bộ lịch ẩn.");
+                } else {
+                    document.getElementById('swipeHandle').click(); // Refresh danh sách
+                    showToast("Đã hiển thị lại lịch.");
+                }
+            }
+        }
+        
+        function restoreAllHidden() {
+            let hidden = document.querySelectorAll('.hidden-step');
+            hidden.forEach(el => el.classList.remove('hidden-step')); 
+            saveUIState(); 
+            closeRestoreModal();
+            showToast("Đã khôi phục toàn bộ lịch ẩn.");
+        }
+
+        function parseNum(val) { if (val === undefined || val === null) return 0; let str = String(val).replace(/\D/g, ''); return parseInt(str, 10) || 0; }
+        function formatMoney(num) { return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(parseNum(num)); }
+        function formatInputMoney(num) { let n = parseNum(num); return n === 0 ? '' : new Intl.NumberFormat('vi-VN').format(n); }
+        function findVal(row, keyword) { if (!row) return ''; let key = Object.keys(row).find(k => k.toLowerCase().includes(keyword.toLowerCase())); return key ? row[key] : ''; }
+
+        function parseDateCustom(str) {
+            if (!str) return null; str = str.toString().trim();
+            if (/^\d{4}-\d{1,2}-\d{1,2}/.test(str)) { let parts = str.split('T')[0].split('-'); return new Date(parts[0], parts[1] - 1, parts[2]); }
+            if (/^\d{1,2}\/\d{1,2}\/\d{4}/.test(str)) { let parts = str.split('/'); return new Date(parts[2], parts[1] - 1, parts[0]); }
+            let d = new Date(str); return isNaN(d.getTime()) ? null : d;
+        }
+
+        function formatDateDisplay(d) {
+            if (!d) return '--'; let day = ("0" + d.getDate()).slice(-2); let month = ("0" + (d.getMonth() + 1)).slice(-2); let year = d.getFullYear(); return `${day}/${month}/${year}`;
+        }
+        function dateToISO(dObj) {
+            if (!dObj) return ''; let year = dObj.getFullYear(); let month = ("0" + (dObj.getMonth() + 1)).slice(-2); let day = ("0" + dObj.getDate()).slice(-2); return `${year}-${month}-${day}`;
+        }
+
+        async function loadData() {
+            const cachedData = localStorage.getItem('chutoanFotoCache');
+            if (cachedData && isFirstLoad) { try { renderUI(JSON.parse(cachedData)); } catch(e) {} }
+
+            try {
+                const res = await fetch(API_URL);
+                const data = await res.json();
+                localStorage.setItem('chutoanFotoCache', JSON.stringify(data));
+                renderUI(data); 
+            } catch (e) { 
+                if (!localStorage.getItem('chutoanFotoCache')) document.getElementById('bookingList').innerHTML = '<div class="loader" style="color:var(--alert-red)">Lỗi mạng. Vui lòng kiểm tra lại!</div>'; 
+            }
+        }
+
+        function silentFetchData() {
+            fetch(API_URL).then(res => res.json()).then(data => { localStorage.setItem('chutoanFotoCache', JSON.stringify(data)); }).catch(e => console.log(e));
+        }
+
+        function renderUI(data) {
+            const list = document.getElementById('bookingList');
+            if (data.length === 0) { list.innerHTML = '<div class="loader">Chưa có lịch chụp nào.</div>'; return; }
+
+            let validData = data.filter(r => r['Khách hàng'] || findVal(r, 'khách'));
+            validData.forEach(r => { let dateStr = r['Ngày chụp'] || findVal(r, 'ngày'); r._dateObj = parseDateCustom(dateStr); });
+            validData.sort((a, b) => { if (!a._dateObj) return 1; if (!b._dateObj) return -1; return a._dateObj - b._dateObj; }); 
+            allValidData = validData;
+
+            let yearsForStats = [...new Set(allValidData.map(r => r._dateObj ? r._dateObj.getFullYear() : null).filter(y => y !== null))].sort((a,b) => b-a);
+            let yearSelect = document.getElementById('filterYear'); let currentSelectedYear = yearSelect.value;
+            yearSelect.innerHTML = `<option value="ALL">Tất cả năm</option>`;
+            yearsForStats.forEach(y => { let selected = (y.toString() === currentSelectedYear) ? 'selected' : ''; yearSelect.insertAdjacentHTML('beforeend', `<option value="${y}" ${selected}>Năm ${y}</option>`); });
+
+            if (isFirstLoad) {
+                const now = new Date(); let currentY = now.getFullYear().toString(); let currentM = now.getMonth().toString();
+                if (yearsForStats.includes(parseInt(currentY))) { yearSelect.value = currentY; } document.getElementById('filterMonth').value = currentM;
+                isFirstLoad = false;
+            }
+
+            let groupedData = {};
+            validData.forEach(row => {
+                let dObj = row._dateObj;
+                let yearStr = dObj ? dObj.getFullYear().toString() : 'Chưa Rõ';
+                let monthStr = dObj ? `Tháng ${dObj.getMonth() + 1}` : 'Tháng Chưa Rõ';
+                let displayDate = dObj ? formatDateDisplay(dObj) : (findVal(row, 'ngày') || 'Không rõ ngày');
+
+                let timeStr = (findVal(row, 'thời gian') || '').toString().trim().toLowerCase();
+                let sessionStr = 'Chụp 2 Buổi'; 
+                if (timeStr.startsWith('sáng')) sessionStr = 'Sáng';
+                else if (timeStr.startsWith('chiều')) sessionStr = 'Chiều';
+                else if (timeStr.startsWith('tối') || timeStr.startsWith('đêm')) sessionStr = 'Tối';
+
+                if (!groupedData[yearStr]) groupedData[yearStr] = {};
+                if (!groupedData[yearStr][monthStr]) groupedData[yearStr][monthStr] = {};
+                if (!groupedData[yearStr][monthStr][displayDate]) groupedData[yearStr][monthStr][displayDate] = {};
+                if (!groupedData[yearStr][monthStr][displayDate][sessionStr]) groupedData[yearStr][monthStr][displayDate][sessionStr] = [];
+                
+                groupedData[yearStr][monthStr][displayDate][sessionStr].push(row);
+            });
+
+            let sortedYears = Object.keys(groupedData).sort((a, b) => b.localeCompare(a));
+            const sessionOrder = { 'Sáng': 1, 'Chiều': 2, 'Tối': 3, 'Chụp 2 Buổi': 4 };
+            const sessionIcons = { 'Sáng': ICON_SUN, 'Chiều': ICON_SUNSET, 'Tối': ICON_MOON, 'Chụp 2 Buổi': ICON_CALENDAR };
+
+            let htmlStr = ''; let yIndex = 0;
+            sortedYears.forEach(yearStr => {
+                let isYearShow = (yIndex === 0) ? 'show' : '';
+                let iconRotate = (yIndex === 0) ? 'rotate(180deg)' : 'rotate(0deg)';
+                let yearNum = parseInt(yearStr);
+
+                htmlStr += `<div class="year-block" id="yb-${yIndex}" data-year="${yearNum}"><div class="year-header glass-fx" id="yh-${yIndex}" 
+                             onclick="toggleSection('year-content-${yIndex}', this)"
+                             ontouchstart="startLongPress(event, 'yb-${yIndex}', 'Năm ${yearStr}')"
+                             ontouchend="cancelLongPress()"
+                             ontouchmove="cancelLongPress()"
+                             onmousedown="startLongPress(event, 'yb-${yIndex}', 'Năm ${yearStr}')"
+                             onmouseup="cancelLongPress()"
+                             onmouseleave="cancelLongPress()"><span style="display:flex; align-items:center;">${ICON_CALENDAR} NĂM ${yearStr}</span><span class="toggle-icon" style="transform: ${iconRotate}">▼</span></div><div class="year-content ${isYearShow}" id="year-content-${yIndex}">`;
+                
+                let mIndex = 0;
+                for (let monthStr in groupedData[yearStr]) {
+                    let monthNum = parseInt(monthStr.replace(/\D/g, '')) || 0;
+                    
+                    htmlStr += `<div class="month-block" id="mb-${yIndex}-${mIndex}" data-year="${yearNum}" data-month="${monthNum}">
+                        <div class="month-header glass-fx" id="mh-${yIndex}-${mIndex}" 
+                             onclick="toggleSection('month-content-${yIndex}-${mIndex}', this)"
+                             ontouchstart="startLongPress(event, 'mb-${yIndex}-${mIndex}', '${monthStr}')"
+                             ontouchend="cancelLongPress()"
+                             ontouchmove="cancelLongPress()"
+                             onmousedown="startLongPress(event, 'mb-${yIndex}-${mIndex}', '${monthStr}')"
+                             onmouseup="cancelLongPress()"
+                             onmouseleave="cancelLongPress()">
+                            <span style="display:flex; align-items:center;">${ICON_CALENDAR} ${monthStr}</span><span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="month-content" id="month-content-${yIndex}-${mIndex}">`;
+                    
+                    let dIndex = 0;
+                    
+                    for (let dateStr in groupedData[yearStr][monthStr]) {
+                        let dayNum = dateStr.includes('/') ? parseInt(dateStr.split('/')[0]) : 0;
+                        htmlStr += `<div class="day-block" id="db-${yIndex}-${mIndex}-${dIndex}" data-year="${yearNum}" data-month="${monthNum}" data-day="${dayNum}">
+                        <div class="day-header glass-fx" id="dh-${yIndex}-${mIndex}-${dIndex}" 
+                             onclick="toggleSection('day-content-${yIndex}-${mIndex}-${dIndex}', this)"
+                             ontouchstart="startLongPress(event, 'db-${yIndex}-${mIndex}-${dIndex}', 'Ngày ${dateStr}')"
+                             ontouchend="cancelLongPress()"
+                             ontouchmove="cancelLongPress()"
+                             onmousedown="startLongPress(event, 'db-${yIndex}-${mIndex}-${dIndex}', 'Ngày ${dateStr}')"
+                             onmouseup="cancelLongPress()"
+                             onmouseleave="cancelLongPress()">
+                            <span style="display:flex; align-items:center;">${ICON_CALENDAR} ${dateStr}</span><span class="toggle-icon">▼</span>
+                        </div><div class="day-content" id="day-content-${yIndex}-${mIndex}-${dIndex}">`;
+                        
+                        let sessionsInDay = Object.keys(groupedData[yearStr][monthStr][dateStr]).sort((a, b) => sessionOrder[a] - sessionOrder[b]);
+                        
+                        let sIndex = 0;
+                        sessionsInDay.forEach(session => {
+                            let sessionDisplayText = session === 'Chụp 2 Buổi' ? session : `Buổi ${session}`;
+                            
+                            htmlStr += `<div class="session-divider" onclick="toggleSession('sc-${yIndex}-${mIndex}-${dIndex}-${sIndex}', this)">
+                                <span>${sessionIcons[session]} ${sessionDisplayText} <i class="toggle-icon" style="display:inline-block; margin-left:6px; transform:rotate(180deg); font-style:normal;">▼</i></span>
+                            </div>
+                            <div class="session-content" id="sc-${yIndex}-${mIndex}-${dIndex}-${sIndex}">`;
+
+                            groupedData[yearStr][monthStr][dateStr][session].forEach(row => {
+                                let gia = parseNum(findVal(row, 'giá')); let phi = parseNum(findVal(row, 'phí')); let coc = parseNum(findVal(row, 'cọc'));
+                                let conLai = parseNum(findVal(row, 'còn lại')); 
+                                let rowIndex = row['_rowIndex'];
+                                
+                                let mapsVal = findVal(row, 'maps') || row['Link Maps'] || '';
+                                let driveVal = findVal(row, 'drive') || row['Link Drive'] || '';
+                                let fbVal = findVal(row, 'facebook') || row['Link Facebook'] || '';
+                                let zaloVal = findVal(row, 'zalo') || row['SĐT Zalo'] || '';
+                                let igVal = findVal(row, 'instagram') || findVal(row, 'ig') || row['Link Instagram'] || '';
+                                
+                                let sdtVal = findVal(row, 'sđt') || findVal(row, 'điện thoại') || row['SĐT'] || '';
+                                let noteVal = findVal(row, 'ghi chú');
+                                let rawClientName = row['Khách hàng'] || findVal(row, 'khách') || '';
+
+                                let socialLinks = '';
+                                if (fbVal) socialLinks += `<a href="${fbVal}" target="_blank" class="social-icon" onclick="event.stopPropagation()">${FB_ICON}</a>`;
+                                if (zaloVal) {
+                                    let zPhone = String(zaloVal).replace(/\D/g, '');
+                                    if (zPhone.length === 9 && !zPhone.startsWith('0')) zPhone = '0' + zPhone; 
+                                    if (zPhone.startsWith('84') && zPhone.length === 11) zPhone = '0' + zPhone.slice(2);
+                                    socialLinks += `<a href="https://zalo.me/${zPhone}" target="_blank" class="social-icon" onclick="event.stopPropagation()">${ZALO_ICON}</a>`;
+                                }
+                                if (igVal) socialLinks += `<a href="${igVal}" target="_blank" class="social-icon" onclick="event.stopPropagation()">${IG_ICON}</a>`;
+
+                                let clientNameHTML = `<div class="client-name-container">
+                                    <span>${rawClientName}</span>
+                                    ${socialLinks ? `<div class="social-links-row">${socialLinks}</div>` : ''}
+                                </div>`;
+
+                                let sdtHTML = '';
+                                if (sdtVal) {
+                                    let cleanPhone = sdtVal.toString().replace(/[^\d+]/g, '');
+                                    if (cleanPhone.length === 9 && !cleanPhone.startsWith('0')) cleanPhone = '0' + cleanPhone;
+                                    if (cleanPhone.startsWith('84') && cleanPhone.length === 11) cleanPhone = '0' + cleanPhone.slice(2);
+                                    
+                                    sdtHTML = `<div class="location-row" style="margin-bottom: 12px;">
+                                        <span class="location-label">${ICON_PHONE} SĐT:</span>
+                                        <span class="location-value"><a href="tel:${cleanPhone}" style="color: var(--accent-gold); font-weight: 800; text-decoration: none;" onclick="event.stopPropagation()">${cleanPhone}</a></span>
+                                    </div>`;
+                                }
+
+                                let moneyStatusHTML = conLai > 0 ? `<span class="debt">Còn nợ: ${formatMoney(conLai)}</span>` : `<span class="paid">Đã tất toán ✓</span>`;
+
+                                let mapsBtn = mapsVal ? `<a href="${mapsVal}" target="_blank" class="action-link-btn maps" onclick="event.stopPropagation()">${ICON_PIN} Maps</a>` : '';
+                                let driveBtn = driveVal ? `<a href="${driveVal}" target="_blank" class="action-link-btn drive" onclick="event.stopPropagation()">📁 Drive</a>` : '';
+                                let linkButtonsHTML = (mapsBtn || driveBtn) ? `<div class="action-links">${mapsBtn}${driveBtn}</div>` : '';
+
+                                let paidBtnHTML = '';
+                                if (conLai > 0) { 
+                                    paidBtnHTML = `<div style="margin-top: 12px;"><button type="button" class="btn-pay" onclick="event.stopPropagation(); markPaid('${rowIndex}')">${ICON_CHECK} ĐÃ THANH TOÁN</button></div>`; 
+                                }
+
+                                let noteHTML = '';
+                                if (noteVal) { noteHTML = `<div class="detail-note" onclick="event.stopPropagation()"><div class="detail-note-label" style="color: var(--text-muted);">${ICON_NOTE} GHI CHÚ / TIMELINE</div><div class="detail-note-content">${noteVal}</div></div>`; }
+
+                                htmlStr += `
+                                    <div class="card glass-fx" onclick="toggleSection('expanded-${rowIndex}', this, true)">
+                                        <div class="card-header">
+                                            <div><h2 class="client-name">${clientNameHTML}</h2><span class="tag-package">${findVal(row, 'nội dung') || 'Gói Chụp'}</span></div>
+                                            <span class="tag-session">${findVal(row, 'thời gian') || 'Cả ngày'}</span>
+                                        </div>
+                                        <div class="location-row"><span class="location-label" style="color: var(--text-muted);">${ICON_PIN} Địa điểm:</span><span class="location-value">${findVal(row, 'địa điểm') || '--'}</span></div>
+                                        ${sdtHTML}
+                                        ${linkButtonsHTML}
+                                        <div class="money-bar"><span class="total">Tổng: <span class="total-num">${formatMoney(gia + phi)}</span></span>${moneyStatusHTML}</div>
+                                        <div class="card-expanded-content" id="expanded-${rowIndex}">
+                                            <div class="detail-item"><span>Phí đi lại</span><span>${formatMoney(phi)}</span></div>
+                                            <div class="detail-item"><span>Tiền cọc</span><span>${formatMoney(coc)}</span></div>
+                                            ${noteHTML}
+                                            ${paidBtnHTML}
+                                            <div class="card-btns-row">
+                                                <button type="button" class="btn-card-action btn-edit" onclick="event.stopPropagation(); openEditModal('${rowIndex}')">${ICON_EDIT} SỬA LỊCH</button>
+                                                <button type="button" class="btn-card-action btn-delete" onclick="event.stopPropagation(); deleteBooking('${rowIndex}')">${ICON_DELETE} XÓA LỊCH</button>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                            });
+                            
+                            htmlStr += `</div>`; 
+                            sIndex++;
+                        });
+                        htmlStr += `</div></div>`; dIndex++;
+                    }
+                    htmlStr += `</div></div>`; mIndex++;
+                }
+                htmlStr += `</div></div>`; yIndex++;
+            });
+            list.innerHTML = htmlStr; updateStatsUI();
+            restoreUIState();
+        }
+
+        function toggleSection(id, headerEl, isCard = false) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.toggle('show');
+                if (!isCard) { const icon = headerEl.querySelector('.toggle-icon'); icon.style.transform = el.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)'; }
+                setTimeout(saveUIState, 100);
+            }
+        }
+
+        function toggleSession(id, headerEl) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.toggle('collapsed');
+                const icon = headerEl.querySelector('.toggle-icon'); 
+                if (icon) {
+                    icon.style.transform = el.classList.contains('collapsed') ? 'rotate(0deg)' : 'rotate(180deg)';
+                }
+                setTimeout(saveUIState, 100);
+            }
+        }
+
+        function updateStatsUI() {
+            let fYear = document.getElementById('filterYear').value; 
+            let fMonth = document.getElementById('filterMonth').value; 
+            let tRev = 0, tPaid = 0, tDebt = 0;
+            
+            let nameMap = {}; 
+            
+            allValidData.forEach(row => {
+                let dObj = row._dateObj; let matchY = true, matchM = true;
+                if (fYear !== "ALL") { if (!dObj || dObj.getFullYear().toString() !== fYear) matchY = false; }
+                if (fMonth !== "ALL") { if (!dObj || dObj.getMonth().toString() !== fMonth) matchM = false; }
+                
+                if (matchY && matchM) {
+                    let gia = parseNum(findVal(row, 'giá')); let phi = parseNum(findVal(row, 'phí')); let coc = parseNum(findVal(row, 'cọc')); 
+                    let tt = parseNum(findVal(row, 'thanh toán thêm')) || 0; let conLai = parseNum(findVal(row, 'còn lại'));
+                    
+                    tRev += (gia + phi); tPaid += (coc + tt); tDebt += conLai; 
+                    
+                    let rawName = row['Khách hàng'] || findVal(row, 'khách') || "";
+                    let clientName = rawName.toString().trim().toLowerCase().replace(/\s+/g, ' ');
+                    
+                    let rawPhone = findVal(row, 'sđt') || findVal(row, 'điện thoại') || row['SĐT'] || "";
+                    let phoneNum = rawPhone.toString().replace(/\D/g, '');
+                    
+                    let rawZalo = findVal(row, 'zalo') || row['SĐT Zalo'] || "";
+                    let zaloNum = rawZalo.toString().replace(/\D/g, '');
+                    
+                    let rawFb = findVal(row, 'facebook') || findVal(row, 'fb') || row['Link Facebook'] || "";
+                    let fbLink = rawFb.toString().trim().toLowerCase().replace(/(\?|&)(mibextid|fbclid|locale|eav|paipv)=[^&]*/g, '').replace(/[?&]$/, '').replace(/^https?:\/\/(www\.|m\.)?(facebook\.com|fb\.com|instagram\.com)\//, '').replace(/\/$/, '');
+                    
+                    let contactKey = phoneNum || zaloNum || fbLink || "no-contact";
+
+                    if (clientName !== "") {
+                        if (!nameMap[clientName]) {
+                            nameMap[clientName] = new Set();
+                        }
+                        nameMap[clientName].add(contactKey);
+                    }
+                }
+            });
+            
+            let totalJobs = 0;
+            for (let name in nameMap) {
+                let contactSet = nameMap[name];
+                let validContacts = Array.from(contactSet).filter(c => c !== "no-contact");
+                
+                if (validContacts.length > 0) {
+                    totalJobs += validContacts.length;
+                } else {
+                    totalJobs += 1;
+                }
+            }
+            
+            document.getElementById('totalRevenue').innerText = formatMoney(tRev); 
+            document.getElementById('totalCollected').innerText = formatMoney(tPaid); 
+            document.getElementById('totalDebt').innerText = formatMoney(tDebt); 
+            document.getElementById('totalShows').innerText = totalJobs;
+        }
+        
+        loadData(); 
+
+        function openModal() { document.getElementById('modalTitle').innerText = "TẠO LỊCH MỚI"; document.getElementById('tab-create').classList.add('active'); document.getElementById('tab-edit').classList.remove('active'); document.body.classList.add('modal-open'); document.getElementById('modalForm').style.display = 'flex'; }
+        function closeModal() { document.body.classList.remove('modal-open'); document.getElementById('modalForm').style.display = 'none'; }
+
+        function openEditModal(rowIndex) {
+            const item = allValidData.find(r => String(r._rowIndex) === String(rowIndex)); 
+            if (!item) {
+                alert("Hệ thống đang đồng bộ, vui lòng thử lại sau giây lát.");
+                return;
+            }
+            let name = item['Khách hàng'] || findVal(item, 'khách') || 'Khách hàng';
+
+            document.getElementById('modalTitle').innerText = `SỬA LỊCH: ${name}`; 
+            document.getElementById('e_rowindex').value = rowIndex;
+            let dObj = item._dateObj; document.getElementById('e_ngay').value = dObj ? dateToISO(dObj) : '';
+            document.getElementById('e_thoigian').value = findVal(item, 'thời gian'); document.getElementById('e_khach').value = name;
+            
+            document.getElementById('e_linkfb').value = findVal(item, 'facebook') || item['Link Facebook'] || ''; 
+            
+            let zaloEdit = findVal(item, 'zalo') || item['SĐT Zalo'] || '';
+            if(zaloEdit) {
+                let p = String(zaloEdit).replace(/\D/g, '');
+                if(p.length === 9 && !p.startsWith('0')) p = '0'+p;
+                document.getElementById('e_zalo').value = p;
+            } else { document.getElementById('e_zalo').value = ''; }
+
+            document.getElementById('e_ig').value = findVal(item, 'instagram') || findVal(item, 'ig') || item['Link Instagram'] || '';
+            document.getElementById('e_diadiem').value = findVal(item, 'địa điểm'); document.getElementById('e_noidung').value = findVal(item, 'nội dung') || 'Khác';
+            document.getElementById('e_gia').value = formatInputMoney(findVal(item, 'giá')); document.getElementById('e_phi').value = formatInputMoney(findVal(item, 'phí')); document.getElementById('e_coc').value = formatInputMoney(findVal(item, 'cọc')); 
+            
+            let sdtEdit = findVal(item, 'sđt') || findVal(item, 'điện thoại') || item['SĐT'] || '';
+            if(sdtEdit) {
+                let p = String(sdtEdit).replace(/\D/g, '');
+                if(p.length === 9 && !p.startsWith('0')) p = '0'+p;
+                document.getElementById('e_sdt').value = p;
+            } else { document.getElementById('e_sdt').value = ''; }
+
+            document.getElementById('e_linkmaps').value = findVal(item, 'maps') || item['Link Maps'] || ''; document.getElementById('e_linkdrive').value = findVal(item, 'drive') || item['Link Drive'] || ''; document.getElementById('e_ghichu').value = findVal(item, 'ghi chú');
+            
+            document.getElementById('tab-create').classList.remove('active'); 
+            document.getElementById('tab-edit').classList.add('active'); 
+            document.body.classList.add('modal-open'); 
+            document.getElementById('modalForm').style.display = 'flex';
+        }
+
+        document.querySelectorAll('.money-input').forEach(input => { input.addEventListener('input', function(e) { let value = e.target.value.replace(/\D/g, ''); e.target.value = value !== '' ? new Intl.NumberFormat('vi-VN').format(value) : ''; }); });
+
+        async function markPaid(rowIndex) {
+            let item = allValidData.find(r => String(r._rowIndex) === String(rowIndex));
+            if (!item) return;
+            let name = item['Khách hàng'] || findVal(item, 'khách') || 'Khách hàng';
+            
+            if (!confirm(`Xác nhận khách hàng "${name}" đã thanh toán toàn bộ số tiền còn lại?`)) return;
+            
+            let conLaiKey = Object.keys(item).find(k => k.toLowerCase().includes('còn lại')) || 'Còn lại'; 
+            item[conLaiKey] = 0; 
+            renderUI(allValidData); 
+            fetch(API_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: "MARK_PAID", rowIndex: rowIndex }) }).then(() => silentFetchData());
+        }
+
+        async function submitCreate(e) {
+            e.preventDefault(); const btn = document.getElementById('btnCreate'); btn.innerText = "ĐANG ĐỒNG BỘ..."; btn.style.opacity = 0.7; btn.disabled = true;
+            const payload = { action: "CREATE", ngayChup: document.getElementById('c_ngay').value, thoiGian: document.getElementById('c_thoigian').value, khachHang: document.getElementById('c_khach').value, linkFacebook: document.getElementById('c_linkfb').value, zalo: document.getElementById('c_zalo').value, instagram: document.getElementById('c_ig').value, diaDiem: document.getElementById('c_diadiem').value, linkMaps: document.getElementById('c_linkmaps').value, linkDrive: document.getElementById('c_linkdrive').value, noiDung: document.getElementById('c_noidung').value, giaGoi: parseNum(document.getElementById('c_gia').value), phiDiLai: parseNum(document.getElementById('c_phi').value), coc: parseNum(document.getElementById('c_coc').value), ghiChu: document.getElementById('c_ghichu').value, sdt: document.getElementById('c_sdt').value };
+            let newItem = { "Ngày chụp": payload.ngayChup, "Thời gian": payload.thoiGian, "Khách hàng": payload.khachHang, "Link Facebook": payload.linkFacebook, "SĐT Zalo": payload.zalo, "Link Instagram": payload.instagram, "Địa điểm": payload.diaDiem, "Link Maps": payload.linkMaps, "Link Drive": payload.linkDrive, "Nội dung": payload.noiDung, "Giá gói": payload.giaGoi, "Phí đi lại": payload.phiDiLai, "Cọc": payload.coc, "Còn lại": (payload.giaGoi + payload.phiDiLai) - payload.coc, "Ghi chú": payload.ghiChu, "SĐT": payload.sdt, "_rowIndex": Date.now() };
+            newItem._dateObj = parseDateCustom(payload.ngayChup); allValidData.push(newItem);
+            renderUI(allValidData); closeModal(); document.getElementById('formCreate').reset(); btn.innerText = "TẠO LỊCH & ĐỒNG BỘ"; btn.style.opacity = 1; btn.disabled = false;
+            fetch(API_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }).then(() => silentFetchData());
+        }
+
+        async function submitEdit(e) {
+            e.preventDefault(); const btn = document.getElementById('btnEdit'); btn.innerText = "ĐANG LƯU..."; btn.style.opacity = 0.7; btn.disabled = true;
+            const payload = { action: "EDIT_ROW", rowIndex: document.getElementById('e_rowindex').value, ngayChup: document.getElementById('e_ngay').value, thoiGian: document.getElementById('e_thoigian').value, khachHang: document.getElementById('e_khach').value, linkFacebook: document.getElementById('e_linkfb').value, zalo: document.getElementById('e_zalo').value, instagram: document.getElementById('e_ig').value, noiDung: document.getElementById('e_noidung').value, diaDiem: document.getElementById('e_diadiem').value, linkMaps: document.getElementById('e_linkmaps').value, linkDrive: document.getElementById('e_linkdrive').value, giaGoi: parseNum(document.getElementById('e_gia').value), phiDiLai: parseNum(document.getElementById('e_phi').value), coc: parseNum(document.getElementById('e_coc').value), ghiChu: document.getElementById('e_ghichu').value, sdt: document.getElementById('e_sdt').value };
+            let item = allValidData.find(r => String(r._rowIndex) === String(payload.rowIndex));
+            if (item) {
+                let keys = Object.keys(item); item[keys.find(k=>k.toLowerCase().includes('ngày')) || 'Ngày chụp'] = payload.ngayChup; item[keys.find(k=>k.toLowerCase().includes('thời gian')) || 'Thời gian'] = payload.thoiGian; item[keys.find(k=>k.toLowerCase().includes('khách')) || 'Khách hàng'] = payload.khachHang; item['Link Facebook'] = payload.linkFacebook; item['SĐT Zalo'] = payload.zalo; item['Link Instagram'] = payload.instagram; item[keys.find(k=>k.toLowerCase().includes('địa điểm')) || 'Địa điểm'] = payload.diaDiem; item['Link Maps'] = payload.linkMaps; item['Link Drive'] = payload.linkDrive; item[keys.find(k=>k.toLowerCase().includes('nội dung')) || 'Nội dung'] = payload.noiDung; item[keys.find(k=>k.toLowerCase().includes('giá')) || 'Giá gói'] = payload.giaGoi; item[keys.find(k=>k.toLowerCase().includes('phí')) || 'Phí đi lại'] = payload.phiDiLai; item[keys.find(k=>k.toLowerCase().includes('cọc')) || 'Cọc'] = payload.coc; let tt = parseNum(findVal(item, 'thanh toán thêm')) || 0; item[keys.find(k=>k.toLowerCase().includes('còn lại')) || 'Còn lại'] = (payload.giaGoi + payload.phiDiLai) - (payload.coc + tt); item[keys.find(k=>k.toLowerCase().includes('ghi chú')) || 'Ghi chú'] = payload.ghiChu; item[keys.find(k=>k.toLowerCase().includes('sđt')) || 'SĐT'] = payload.sdt; item._dateObj = parseDateCustom(payload.ngayChup);
+            }
+            renderUI(allValidData); closeModal(); btn.innerText = "LƯU CẬP NHẬT"; btn.style.opacity = 1; btn.disabled = false;
+            fetch(API_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }).then(() => silentFetchData());
+        }
+
+        async function deleteBooking(rowIndex) {
+            let item = allValidData.find(r => String(r._rowIndex) === String(rowIndex));
+            if (!item) return;
+            let name = item['Khách hàng'] || findVal(item, 'khách') || 'Khách hàng';
+            
+            if (!confirm(`Bạn có chắc chắn muốn XÓA lịch của khách "${name}" không? Thao tác này không thể hoàn tác.`)) return;
+            
+            allValidData = allValidData.filter(r => String(r._rowIndex) !== String(rowIndex)); 
+            renderUI(allValidData);
+            fetch(API_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: "DELETE_ROW", rowIndex: rowIndex }) }).then(() => silentFetchData());
+        }
     </script>
 </body>
 </html>
