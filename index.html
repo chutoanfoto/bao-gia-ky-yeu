@@ -4,19 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- THẺ HIỂN THỊ PREVIEW ĐÃ CHUYỂN SANG HOST MỚI (LOAD NHANH) -->
+    <!-- TỐI ƯU KẾT NỐI MÁY CHỦ ẢNH TỪ SỚM ĐỂ LOAD NHANH HƠN -->
+    <link rel="preconnect" href="https://i.postimg.cc" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- THẺ HIỂN THỊ PREVIEW GỐC CỦA BẠN (KHÔNG LỖI MESSENGER/ZALO) -->
     <meta property="og:title" content="Bảng Giá Chụp Kỷ Yếu | Chu Toàn Foto">
     <meta property="og:description" content="Lưu giữ thanh xuân rực rỡ. Hỗ trợ phụ kiện, trả toàn bộ file gốc. Xem ngay bảng giá chi tiết!">
-    <meta property="og:image" content="https://iili.io/dl22Hnj.jpg">
+    <meta property="og:image" content="https://i.postimg.cc/5NHJGHLh/preview-ky-yeu.jpg">
     <meta property="og:url" content="https://chutoanfoto.github.io/bao-gia-ky-yeu/">
     <meta property="og:type" content="website">
     
-    <!-- HỖ TRỢ HIỂN THỊ ẢNH TO -->
+    <!-- HỖ TRỢ FIX INSTAGRAM KHÔNG CẮT CHỮ -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://iili.io/dl22Hnj.jpg">
+    <meta name="twitter:image" content="https://i.postimg.cc/5NHJGHLh/preview-ky-yeu.jpg">
 
-    <title>Bảng Giá Kỷ Yếu - Chu Toàn (Fast Load)</title>
+    <title>Bảng Giá Kỷ Yếu - Chu Toàn (Liquid Glass PRO)</title>
+    <!-- TỐI ƯU FONT SWAP GIÚP HIỆN CHỮ NGAY LẬP TỨC -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Mulish:wght@400;600;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --accent: #ffffff; 
@@ -144,6 +151,8 @@
             border-radius: 14px;
             position: relative;
             overflow: hidden;
+            /* Thêm will-change để tối ưu phần render đồ họa kính mờ */
+            will-change: transform, backdrop-filter;
         }
         
         .liquid-glass::before {
@@ -391,9 +400,10 @@
     <div class="bg-overlay"></div>
 
     <div class="container">
-        <!-- HEADER VÀ LOGO ĐÃ THAY HOST NHANH -->
+        <!-- HEADER VÀ LOGO TRÊN CÙNG -->
         <div class="hero">
-            <img class="hero-logo" src="https://i.imgur.com/vH0H8uL.png" alt="Chu Toàn Foto Logo">
+            <!-- TỐI ƯU FETCHPRIORITY CHO LOGO LOAD ĐẦU TIÊN -->
+            <img class="hero-logo" src="https://i.postimg.cc/wvF7Hr48/chutoanfoto2026-logo-new.png" alt="Chu Toàn Foto Logo" fetchpriority="high" decoding="async">
             <h1>Bảng Giá Kỷ Yếu</h1>
         </div>
 
@@ -473,19 +483,19 @@
             </div>
         </div>
 
-        <!-- SLIDE ẢNH (ĐÃ CHUYỂN SANG HOST IMGUR ĐỂ LOAD SIÊU NHANH) -->
+        <!-- SLIDE ẢNH (TỐI ƯU LAZY LOAD GIÚP KHÔNG BỊ TREO WEB) -->
         <div class="slider-section">
             <div class="slider-wrapper">
                 <div class="slider-track" id="sliderTrack">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.imgur.com/rP3iM7T.jpg" alt="Ảnh Mẫu 1">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.imgur.com/Jd0v9WJ.jpg" alt="Ảnh Mẫu 2">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.imgur.com/ZkM2O0y.jpg" alt="Ảnh Mẫu 3">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.imgur.com/xT5l7H2.jpg" alt="Ảnh Mẫu 4">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.imgur.com/oE0B1A7.jpg" alt="Ảnh Mẫu 5">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.imgur.com/yF9K6X3.jpg" alt="Ảnh Mẫu 6">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.imgur.com/Q9M0C4k.jpg" alt="Ảnh Mẫu 7">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.imgur.com/N6jP9Y1.jpg" alt="Ảnh Mẫu 8">
-                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" src="https://i.imgur.com/kF2A5S3.jpg" alt="Ảnh Mẫu 9">
+                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" loading="lazy" decoding="async" src="https://i.postimg.cc/ZK9GK1fx/CNT03694.jpg" alt="Ảnh Mẫu 1">
+                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" loading="lazy" decoding="async" src="https://i.postimg.cc/J4yf49Tq/CNT03819.jpg" alt="Ảnh Mẫu 2">
+                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" loading="lazy" decoding="async" src="https://i.postimg.cc/4NKDNr8v/CNT03820.jpg" alt="Ảnh Mẫu 3">
+                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" loading="lazy" decoding="async" src="https://i.postimg.cc/15gk5LWC/CNT03827.jpg" alt="Ảnh Mẫu 4">
+                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" loading="lazy" decoding="async" src="https://i.postimg.cc/rFdBFvh7/CNT03998.jpg" alt="Ảnh Mẫu 5">
+                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" loading="lazy" decoding="async" src="https://i.postimg.cc/4NrrKBMW/CNT04078.jpg" alt="Ảnh Mẫu 6">
+                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" loading="lazy" decoding="async" src="https://i.postimg.cc/PrBBL2c6/CNT04345.jpg" alt="Ảnh Mẫu 7">
+                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" loading="lazy" decoding="async" src="https://i.postimg.cc/J499yPvw/CNT04407.jpg" alt="Ảnh Mẫu 8">
+                    <img class="slide liquid-glass" style="padding:0; overflow:hidden;" loading="lazy" decoding="async" src="https://i.postimg.cc/TYZZyCFP/CNT04559.jpg" alt="Ảnh Mẫu 9">
                 </div>
             </div>
         </div>
