@@ -4,19 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- CODE ÉP HIỂN THỊ PREVIEW CHUẨN TRÁNH BỊ CẮT TRÊN INSTAGRAM -->
+    <!-- THẺ HIỂN THỊ PREVIEW CHUẨN XÁC GIỮ NGUYÊN CHO MESSENGER VÀ ZALO -->
     <meta property="og:title" content="Bảng Giá Chụp Kỷ Yếu | Chu Toàn Foto">
     <meta property="og:description" content="Lưu giữ thanh xuân rực rỡ. Hỗ trợ phụ kiện, trả toàn bộ file gốc. Xem ngay bảng giá chi tiết!">
     <meta property="og:image" content="https://i.postimg.cc/5NHJGHLh/preview-ky-yeu.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://chutoanfoto.github.io/bao-gia-ky-yeu/">
     <meta property="og:type" content="website">
     
+    <!-- HỖ TRỢ HIỂN THỊ ẢNH TO TRÊN CÁC NỀN TẢNG KHÁC -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://i.postimg.cc/5NHJGHLh/preview-ky-yeu.jpg">
 
-    <title>Bảng Giá Kỷ Yếu - Chu Toàn</title>
+    <title>Bảng Giá Kỷ Yếu - Chu Toàn (Liquid Glass PRO)</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Mulish:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -25,16 +23,12 @@
             --text-main: #f0f0f0;
             --border-light: rgba(255, 255, 255, 0.15);
             
-            /* THÔNG SỐ 3D LIQUID GLASS PRO ĐỘC QUYỀN */
-            --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%);
-            --glass-border: 1px solid rgba(255, 255, 255, 0.05);
-            --glass-top: 1px solid rgba(255, 255, 255, 0.45);
-            --glass-left: 1px solid rgba(255, 255, 255, 0.25);
-            --glass-bottom: 1px solid rgba(0, 0, 0, 0.5);
-            --glass-right: 1px solid rgba(0, 0, 0, 0.3);
-            --glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 
-                            inset 0 1px 2px rgba(255, 255, 255, 0.25), 
-                            inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+            /* THÔNG SỐ 3D LIQUID GLASS PRO */
+            --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.18);
+            --glass-top: 1px solid rgba(255, 255, 255, 0.5);
+            --glass-left: 1px solid rgba(255, 255, 255, 0.3);
+            --glass-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.25);
         }
 
         html, body {
@@ -47,52 +41,42 @@
 
         body {
             font-family: 'Mulish', sans-serif;
-            background: #040805; 
+            background-color: #040805; 
             color: var(--text-main);
             margin: 0;
             padding: 0;
             line-height: 1.6;
             position: relative;
+            min-height: 100vh;
         }
 
-        /* LỚP NỀN XANH RÊU GỐC */
+        /* NỀN GRADIENT XANH RÊU NHẬN DIỆN */
         .bg-overlay {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, #183021 0%, #0d1a12 30%, #070e0a 70%, #040805 100%);
-            z-index: 0;
-        }
-        
-        .bg-overlay::before {
-            content: '';
-            position: absolute;
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80vw;
-            height: 500px;
-            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 50% 15%, #244630 0%, #0d1f14 50%, #040805 100%);
+            z-index: 1;
             pointer-events: none;
         }
 
         .container {
             position: relative;
-            z-index: 1; 
+            z-index: 10; 
             max-width: 650px;
             width: 100%;
             margin: 0 auto;
             min-height: 100vh;
-            padding-bottom: 30px;
-            overflow: hidden;
+            padding-bottom: 40px;
+            box-sizing: border-box;
         }
 
-        /* HEADER & LOGO DỜI LÊN TRÊN */
+        /* HEADER & LOGO TRÊN CÙNG */
         .hero {
             text-align: center;
-            padding: 45px 15px 25px; 
+            padding: 40px 15px 20px; 
             margin-bottom: 10px; 
             border-bottom: 1px solid var(--border-light);
             display: flex;
@@ -101,43 +85,43 @@
         }
         
         .hero-logo {
-            width: 150px; 
+            width: 140px; 
             height: auto;
-            margin-bottom: 15px;
-            filter: drop-shadow(0px 3px 8px rgba(0,0,0,0.7)) brightness(0) invert(1);
+            margin-bottom: 12px;
+            filter: drop-shadow(0px 3px 8px rgba(0,0,0,0.8)) brightness(0) invert(1);
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 26px; 
+            font-size: 24px; 
             font-weight: 600;
             color: var(--accent);
             margin: 0;
-            letter-spacing: 2.5px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             line-height: 1.4; 
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.6); 
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8); 
         }
 
         .pricing-section {
             padding: 0 15px 15px; 
         }
 
-        /* TIÊU ĐỀ NHÓM */
+        /* TIÊU ĐỀ PHÂN NHÓM */
         .group-header {
             text-align: center;
             font-family: 'Playfair Display', serif;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
             color: var(--accent);
-            margin: 35px 0 20px;
+            margin: 30px 0 15px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .group-header::before, .group-header::after {
@@ -147,46 +131,40 @@
             background: var(--border-light);
         }
 
-        /* 3D LIQUID GLASS PRO CHUẨN */
+        /* THẺ LIQUID GLASS PRO */
         .liquid-glass {
             background: var(--glass-bg);
-            backdrop-filter: blur(20px) saturate(120%);
-            -webkit-backdrop-filter: blur(20px) saturate(120%);
-            
+            backdrop-filter: blur(16px) saturate(120%);
+            -webkit-backdrop-filter: blur(16px) saturate(120%);
             border: var(--glass-border);
             border-top: var(--glass-top);
             border-left: var(--glass-left);
-            border-bottom: var(--glass-bottom);
-            border-right: var(--glass-right);
-            
             box-shadow: var(--glass-shadow);
-            border-radius: 16px;
+            border-radius: 14px;
             position: relative;
             overflow: hidden;
-            transition: all 0.3s ease;
         }
         
         .liquid-glass::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: inherit;
-            background: linear-gradient(110deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 30%, transparent 50%);
+            background: linear-gradient(115deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.01) 35%, transparent 60%);
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
         }
 
         /* CARD BÁO GIÁ */
         .price-card {
-            padding: 20px 22px; 
-            margin-bottom: 14px;
+            padding: 18px 20px; 
+            margin-bottom: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         .price-card > div {
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
         .card-title {
@@ -219,18 +197,18 @@
 
         /* CHI TIẾT DỊCH VỤ */
         .details-section {
-            padding: 15px 20px 35px;
+            padding: 15px 15px 30px;
         }
 
         .details-box {
-            padding: 20px 25px;
-            border-radius: 0 16px 16px 0;
+            padding: 22px 22px;
+            border-radius: 0 14px 14px 0;
             border-left: 3px solid var(--accent);
         }
         
         .details-box ul {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             list-style: none;
             padding: 0;
             margin: 0;
@@ -281,12 +259,12 @@
 
         /* SLIDE TRƯỢT */
         .slider-section {
-            padding: 0 20px 20px;
+            padding: 0 15px 25px;
             width: 100%;
             box-sizing: border-box;
         }
         .slider-wrapper {
-            width: 82%;
+            width: 85%;
             margin: 0 auto; 
             position: relative;
         }
@@ -298,7 +276,7 @@
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none; 
             scroll-behavior: smooth;
-            padding-bottom: 25px; 
+            padding-bottom: 20px; 
             align-items: center; 
         }
         .slider-track::-webkit-scrollbar {
@@ -309,18 +287,21 @@
             width: 100%;
             height: auto; 
             scroll-snap-align: center;
-            display: block; 
             border-radius: 12px;
+            border: var(--glass-border);
+            border-top: var(--glass-top);
+            box-shadow: var(--glass-shadow);
+            display: block; 
         }
 
-        /* NÚT BẤM XEM THÊM */
+        /* NÚT BẤM */
         .links-section {
             text-align: center;
-            padding: 0 20px 30px; 
+            padding: 0 15px 30px; 
         }
         .btn-link {
             display: block;
-            width: calc(100% - 40px);
+            width: calc(100% - 30px);
             margin: 0 auto;
             padding: 14px;
             color: var(--text-main);
@@ -331,22 +312,20 @@
             transition: all 0.3s;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-align: center;
         }
         .btn-link span {
             position: relative;
-            z-index: 1;
-        }
-        .btn-link:hover {
-            background: rgba(255,255,255,0.1);
+            z-index: 2;
         }
         .btn-link:active {
-            transform: scale(0.95);
+            transform: scale(0.96);
         }
 
-        /* FOOTER (Logo đã đưa lên đầu) */
+        /* FOOTER */
         .footer {
             text-align: center;
-            padding: 20px 20px 40px;
+            padding: 20px 15px 40px;
             border-top: 1px solid var(--border-light);
             display: flex;
             flex-direction: column;
@@ -390,7 +369,7 @@
 
         .social-icons a svg {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             width: 20px;
             height: 20px;
             fill: currentColor;
@@ -399,7 +378,7 @@
 
         .zalo-text {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             font-family: 'Mulish', sans-serif;
             font-weight: 800;
             font-size: 13px;
@@ -411,7 +390,7 @@
     <div class="bg-overlay"></div>
 
     <div class="container">
-        <!-- HEADER VÀ LOGO -->
+        <!-- HEADER VÀ LOGO TRÊN CÙNG -->
         <div class="hero">
             <img class="hero-logo" src="https://i.postimg.cc/wvF7Hr48/chutoanfoto2026-logo-new.png" alt="Chu Toàn Foto Logo">
             <h1>Bảng Giá Kỷ Yếu</h1>
@@ -467,7 +446,7 @@
             </div>
         </div>
 
-        <!-- CHI TIẾT -->
+        <!-- CHI TIẾT DỊCH VỤ -->
         <div class="details-section">
             <div class="details-box liquid-glass">
                 <ul>
